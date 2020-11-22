@@ -1,0 +1,45 @@
+--= **Caves & Cliffs update 1.17** =--
+**Mobs**
+   + Purple, pink & yellow Axolotls found in Lush Caves and can be put into buckets. Will follow you around and attack other mobs. When they take damage they play dead so no mob attacks them and regen health "If you cooperate with them really well they can heal you"
+   + Goats can jump high
+   - Glow Squid only glows in the sense of endermen eyes, doesn't hypnotize either (Confirmed by dev)
+   + Warden is blind and moves toward vibrations, is scary but cute with a Mumbo Jumbo mustache, two shots full netherite armor and might become friends with bunnies
+**Blocks**
+   + Glow Berries on leafs/vines
+   + Dripleaf plant can grow above water and cannot support entities for too long
+   + Spore Blossom
+   + Stalagcites (Ceiling) that can fall like falling spikes, drips water that can be collected into cauldrons
+   + Stalagmites (Ground) work as spikes, nicely grouped
+   + Sculk Sensor, detects vibrations and outputs a redstone signal. Can use wool declusion to make it directional, can work as wireless redstone. You can sneak to avoid being detected.
+   + Blocks to fit with the Sculk theme
+   + Not mentioned but shown, looks like white & black above ground sea pickles/candles.
+   + Better looking stone was shown as well
+   + Powder snow, looks similar to snow but is like a trap block
+   + Glowing Amethyst crystals that ding
+   + Purple block to fit with the Amythest crystals
+   + Copper ore, generates in veins instead of a blob. You find one, you notice that the stone looks a bit differrent, you mine further, there's more copper
+   + Copper blocks/slabs and other. It also appears to become rusty & infected over time, eventually turning blue.
+   + Lightning rod, can be used to redirect lightning, crafted with copper
+   + Brush, used at ancient structures to clear away debree and find something
+   + Clay pot, can be used to reconnect ceramic shards
+**Biomes**
+   + Lush Caves
+   + Dripstone Caves
+   + Amethyst Geodes
+   + Not quite a biome, but Archaeological excavations were added, basically ancient structures/ruins. See brush
+**Items:**
+   + Telescope zooms far and has a lens effect, crafted with Crystal Shards and Copper
+   + Bundles can hold up to 64 items in 1 slot except can hold differrent items, such as having 4 stacks of 16 eggs or 32 wood and 32 stone
+   + Ceramic shards can be gotten through excavation
+**Other**
+   + Improved cave generation
+   + Old caves/ravines will still exist, but there will also be a variety of new caves
+   + Water levels in caves
+   + Naturally generated water falls
+   + More sounds, such as water falls and air wooshing while in elytra
+   + Cave rafting thanks to water levels/water falls
+   + Changing light, might just be post processing but it shows the lights flickering
+   + More creator tools such as Block Models
+   + Terra Swoop Force reboot
+
+   (Copy and Paste extract from Knowedge Base <https://discord.gg/xpNJdH9>)

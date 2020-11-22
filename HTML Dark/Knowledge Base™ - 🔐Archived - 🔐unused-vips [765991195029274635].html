@@ -1,0 +1,2470 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Knowledge Base™ - &#128272;unused-vips</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/a56bcbda5ea1db3e101c6895440d1c5b.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Knowledge Base™</div>
+        <div class="preamble__entry">&#128272;Archived / &#128272;unused-vips</div>
+
+            <div class="preamble__entry preamble__entry--small">Special channel for VIPs</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991337090613260" id="message-765991337090613260">
+                <div class="chatlog__content">
+                    <div class="markdown">Decided to make this </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991436926976041" id="message-765991436926976041">
+                <div class="chatlog__content">
+                    <div class="markdown">sex </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991514001768529" id="message-765991514001768529">
+                <div class="chatlog__content">
+                    <div class="markdown">no </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991676464201748" id="message-765991676464201748">
+                <div class="chatlog__content">
+                    <div class="markdown">yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991691232477184" id="message-765991691232477184">
+                <div class="chatlog__content">
+                    <div class="markdown">cum </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="765991721506963496" id="message-765991721506963496">
+                <div class="chatlog__content">
+                    <div class="markdown">blast me </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="765992300730908732" id="message-765992300730908732">
+                <div class="chatlog__content">
+                    <div class="markdown">no need to ask </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/a8e4cbfbd0ef543d3e112428b74e3476.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#127817; UgandanKnuckles&#127817;#3891" data-user-id="551770187695652864" style="color: rgb(59,149,207)">&#127817; UgandanKnuckles&#127817;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="765992820241596457" id="message-765992820241596457">
+                <div class="chatlog__content">
+                    <div class="markdown">Vip </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="765993020352626699" id="message-765993020352626699">
+                <div class="chatlog__content">
+                    <div class="markdown">sex </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="765993039012692030" id="message-765993039012692030">
+                <div class="chatlog__content">
+                    <div class="markdown">vip seggs dungeon </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="765994764923174912" id="message-765994764923174912">
+                <div class="chatlog__content">
+                    <div class="markdown">Well this went well </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="765994818718662677" id="message-765994818718662677">
+                <div class="chatlog__content">
+                    <div class="markdown">greed </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="765994847785582632" id="message-765994847785582632">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/behold.mp4">
+Attachment: behold.mp4 (103.49 KB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="765994870971301899" id="message-765994870971301899">
+                <div class="chatlog__content">
+                    <div class="markdown">Eggs </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="765994992220241971" id="message-765994992220241971">
+                <div class="chatlog__content">
+                    <div class="markdown">behold theggs </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="765995112895086613" id="message-765995112895086613">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="goldenegg" title="goldenegg" src="https://cdn.discordapp.com/emojis/716136215341957190.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280693549957130.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493040422944870.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280350527193118.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983162948386898.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983128282464297.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493398952181761.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493249576108202.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493346045231234.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280649664954458.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493074853986315.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983011781738586.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493145855164446.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280425856893029.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492872189411369.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280404579057776.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280538800848976.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280371599245372.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280613354733600.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280558258487316.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280579066429471.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493215346524210.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280213452881970.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492955530362943.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493381369790555.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983001816072204.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492995862921297.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983250592825364.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280360358510674.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493023243206706.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493052100149298.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280289458126918.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280334584643594.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492908298436628.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280200668643361.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280623786098820.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280741302108222.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492435981795350.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493086808014909.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492816585523320.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982997567111229.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280527551856700.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983182821130241.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493121532657696.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280355950428220.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493062656950334.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493185562640495.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983138470428672.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492890493485167.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493127849017374.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492913771741236.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280275205750807.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492913771741236.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982927454994505.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983243638407190.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982990902362112.png"> <img class="emoji emoji--large" alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280488511406131.png"> <img class="emoji emoji--large" alt="concern" title="concern" src="https://cdn.discordapp.com/emojis/756489580697354291.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="765995287096721469" id="message-765995287096721469">
+                <div class="chatlog__content">
+                    <div class="markdown">SHINY EGG </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="765995386560970793" id="message-765995386560970793">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/image0.png">
+                                    <img class="chatlog__attachment-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/image0.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="765995461198610444" id="message-765995461198610444">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="goldenegg" title="goldenegg" src="https://cdn.discordapp.com/emojis/716136215341957190.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280693549957130.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493040422944870.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280350527193118.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983162948386898.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983128282464297.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493398952181761.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280425856893029.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493145855164446.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983011781738586.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493074853986315.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280649664954458.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493346045231234.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493249576108202.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492872189411369.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493316039049238.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280404579057776.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280538800848976.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280371599245372.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280613354733600.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280558258487316.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492995862921297.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983001816072204.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493381369790555.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492955530362943.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280213452881970.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493215346524210.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280579066429471.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983040139296830.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983250592825364.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280360358510674.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493023243206706.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493052100149298.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280289458126918.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280334584643594.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492908298436628.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493298830082108.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983058153701477.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280200668643361.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280436560625708.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280623786098820.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280681671557222.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492837095669820.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983095000793100.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493272959352833.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492897996963880.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280521922969623.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983044568612876.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983237439225916.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493310641242142.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492435981795350.png">
+0-50 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996057800605706" id="message-765996057800605706">
+                <div class="chatlog__content">
+                    <div class="markdown">What the hell happenned here </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996062997086208" id="message-765996062997086208">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280168087289867.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280741302108222.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983172717051924.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492866644672522.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492511810617374.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983269119066112.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280764890873906.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493304672485416.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493255385350265.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982977300365322.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280601740574792.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492523588485130.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280365483819030.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492920310923306.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983077590106144.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493045837791292.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492385306345573.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493191128612966.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280550431653938.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492848659365928.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983083932155935.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983166912004146.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493086808014909.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492816585523320.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983123627048960.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492854640443555.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280339714015282.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982997567111229.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983112289714256.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493369369886822.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280393938108477.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280442361217154.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983208322498670.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280329144631337.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280459063197707.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280146667241584.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492396693749891.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280465606311936.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717982932198752357.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492447956533268.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718492975944171633.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493261425279016.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280670158061570.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493203376111666.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/718493104755441664.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280058720813066.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280108180045844.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280573252861952.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/717983182821130241.png"> <img class="emoji " alt="egg" title="egg" src="https://cdn.discordapp.com/emojis/716280527551856700.png"> 51-100 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996086602104852" id="message-765996086602104852">
+                <div class="chatlog__content">
+                    <div class="markdown">seggs </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996097604550686" id="message-765996097604550686">
+                <div class="chatlog__content">
+                    <div class="markdown">101 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996154956546058" id="message-765996154956546058">
+                <div class="chatlog__content">
+                    <div class="markdown">102 </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="765996398998847538" id="message-765996398998847538">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://www.youtube.com/watch?v=hZBu9coLb24">https://www.youtube.com/watch?v=hZBu9coLb24</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+                                                        <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCGlrmkGiIu-FFAxcifnng4g">iTMG</a>
+                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=hZBu9coLb24">
+                                                    <div class="markdown">the closest call i&#39;ve ever had in minecraft...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">you wont believe how i survived this omg</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/maxresdefault.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/maxresdefault.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996594545426433" id="message-765996594545426433">
+                <div class="chatlog__content">
+                    <div class="markdown">Wow, so intense (!) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 06:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="765996701345120296" id="message-765996701345120296">
+                <div class="chatlog__content">
+                    <div class="markdown">agreed </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="765998703152201749" id="message-765998703152201749">
+                <div class="chatlog__content">
+                    <div class="markdown">103 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="765998742800695306" id="message-765998742800695306">
+                <div class="chatlog__content">
+                    <div class="markdown">104 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="765998771866828820" id="message-765998771866828820">
+                <div class="chatlog__content">
+                    <div class="markdown">105 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="765998844994912276" id="message-765998844994912276">
+                <div class="chatlog__content">
+                    <div class="markdown">10sex </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="765998991695020052" id="message-765998991695020052">
+                <div class="chatlog__content">
+                    <div class="markdown">10seven <span class="chatlog__edited-timestamp" title="14-Oct-20 07:06 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="765999073110655048" id="message-765999073110655048">
+                <div class="chatlog__content">
+                    <div class="markdown">10ate </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="766008506838679622" id="message-766008506838679622">
+                <div class="chatlog__content">
+                    <div class="markdown">11drank </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">14-Oct-20 08:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="766021000566800384" id="message-766021000566800384">
+                <div class="chatlog__content">
+                    <div class="markdown">you have had a severe and continuous laps in your judgement </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 02:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="766113069117866005" id="message-766113069117866005">
+                <div class="chatlog__content">
+                    <div class="markdown">huh </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766113085311287317" id="message-766113085311287317">
+                <div class="chatlog__content">
+                    <div class="markdown">new channel </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766113092228087830" id="message-766113092228087830">
+                <div class="chatlog__content">
+                    <div class="markdown">okay <span class="chatlog__edited-timestamp" title="15-Oct-20 02:39 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="766119888443277383" id="message-766119888443277383">
+                <div class="chatlog__content">
+                    <div class="markdown">yep </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="766120416434454528" id="message-766120416434454528">
+                <div class="chatlog__content">
+                    <div class="markdown">peenid </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="766123877809651712" id="message-766123877809651712">
+                <div class="chatlog__content">
+                    <div class="markdown">useless channel </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="766123964497920061" id="message-766123964497920061">
+                <div class="chatlog__content">
+                    <div class="markdown">useless person </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766123989335539732" id="message-766123989335539732">
+                <div class="chatlog__content">
+                    <div class="markdown">not even a car </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124026166640651" id="message-766124026166640651">
+                <div class="chatlog__content">
+                    <div class="markdown">I am </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766124047087566868" id="message-766124047087566868">
+                <div class="chatlog__content">
+                    <div class="markdown">sCARy </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124069451464705" id="message-766124069451464705">
+                <div class="chatlog__content">
+                    <div class="markdown">ah </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766124087047094312" id="message-766124087047094312">
+                <div class="chatlog__content">
+                    <div class="markdown">but you can&#39;t tell </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124105451569152" id="message-766124105451569152">
+                <div class="chatlog__content">
+                    <div class="markdown">I can </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124152301944833" id="message-766124152301944833">
+                <div class="chatlog__content">
+                    <div class="markdown">the car doesn&#39;t stand out </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124200145977355" id="message-766124200145977355">
+                <div class="chatlog__content">
+                    <div class="markdown">it doesn&#39;t need to </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124259843506206" id="message-766124259843506206">
+                <div class="chatlog__content">
+                    <div class="markdown">but it should </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 03:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="766124288172228668" id="message-766124288172228668">
+                <div class="chatlog__content">
+                    <div class="markdown">nah </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766124301379174411" id="message-766124301379174411">
+                <div class="chatlog__content">
+                    <div class="markdown">it&#39;s in there </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="766124328818966558" id="message-766124328818966558">
+                <div class="chatlog__content">
+                    <div class="markdown">it&#39;s enough for me <span class="chatlog__edited-timestamp" title="15-Oct-20 03:24 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 09:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="766398239527403530" id="message-766398239527403530">
+                <div class="chatlog__content">
+                    <div class="markdown">it does stand out if you <strong>car</strong>e about it <span class="chatlog__edited-timestamp" title="15-Oct-20 09:33 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="766399628374835211" id="message-766399628374835211">
+                <div class="chatlog__content">
+                    <div class="markdown">mmm </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/f9ace63658651e8776c23d3cec7a376a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kat (Dapper)#0746" data-user-id="387415170982477824" style="color: rgb(151,156,159)">A seal with a gf :sunglasses:</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="766405127287865344" id="message-766405127287865344">
+                <div class="chatlog__content">
+                    <div class="markdown">4️⃣ </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="766405682550931496" id="message-766405682550931496">
+                <div class="chatlog__content">
+                    <div class="markdown">so guys, we did it </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 03:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="766667369308356672" id="message-766667369308356672">
+                <div class="chatlog__content">
+                    <div class="markdown">no </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="766732082667061308" id="message-766732082667061308">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="🥚" title="🥚" src="https://twemoji.maxcdn.com/2/72x72/1f95a.png">? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="766734348363366442" id="message-766734348363366442">
+                <div class="chatlog__content">
+                    <div class="markdown">yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="766734513896030208" id="message-766734513896030208">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji " alt="🥚" title="🥚" src="https://twemoji.maxcdn.com/2/72x72/1f95a.png"> celent </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 08:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="766739256256364584" id="message-766739256256364584">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="🥚" title="🥚" src="https://twemoji.maxcdn.com/2/72x72/1f95a.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/0462c060420fc06a11e562ca819bcb0c.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="techno salami#3587" data-user-id="763191621633966081" style="color: rgb(47,176,21)">techno salami</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 03:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="767940169470836746" id="message-767940169470836746">
+                <div class="chatlog__content">
+                    <div class="markdown">BEHOLD THE EGGS </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 06:13 AM</span>
+
+            <div class="chatlog__message " data-message-id="767978857646260264" id="message-767978857646260264">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/video0.mp4">
+Attachment: video0.mp4 (103.49 KB)                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 03:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="768121505133363251" id="message-768121505133363251">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511">@&#128017;Sheep-kun; SheepCommander☭&#127913;</span> make that an autoresponse pls </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 03:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="768121945635815424" id="message-768121945635815424">
+                <div class="chatlog__content">
+                    <div class="markdown">yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="768135500242223135" id="message-768135500242223135">
+                <div class="chatlog__content">
+                    <div class="markdown">Yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="768136833829699584" id="message-768136833829699584">
+                <div class="chatlog__content">
+                    <div class="markdown">BEHOLD THE EGGS </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768136868659200061" id="message-768136868659200061">
+                <div class="chatlog__content">
+                    <div class="markdown">no autoresponse </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768136901248679938" id="message-768136901248679938">
+                <div class="chatlog__content">
+                    <div class="markdown">I&#39;m disappointed <span class="chatlog__edited-timestamp" title="20-Oct-20 04:41 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="768136996547198986" id="message-768136996547198986">
+                <div class="chatlog__content">
+                    <div class="markdown">welll </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768137007351463939" id="message-768137007351463939">
+                <div class="chatlog__content">
+                    <div class="markdown">fine </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137536924811295" id="message-768137536924811295">
+                <div class="chatlog__content">
+                    <div class="markdown">BEHOLD THE EGGS </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137537582923826" id="message-768137537582923826">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/765991195029274635/767978855440187452/video0.mp4">https://cdn.discordapp.com/attachments/765991195029274635/767978855440187452/video0.mp4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137559494492191" id="message-768137559494492191">
+                <div class="chatlog__content">
+                    <div class="markdown">YEAAAAAAAAAAAAAAAAAAAAAAAAH </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137578343301160" id="message-768137578343301160">
+                <div class="chatlog__content">
+                    <div class="markdown">lmao </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137579031298048" id="message-768137579031298048">
+                <div class="chatlog__content">
+                    <div class="markdown">yeeeeeeeeeeees </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768137614577893406" id="message-768137614577893406">
+                <div class="chatlog__content">
+                    <div class="markdown">behold the eggs </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137614904786944" id="message-768137614904786944">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://cdn.discordapp.com/attachments/765991195029274635/767978855440187452/video0.mp4">https://cdn.discordapp.com/attachments/765991195029274635/767978855440187452/video0.mp4</a> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/daad345928c261dd0c78237c65b19168.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kazuma#1914" data-user-id="410604925500784657" style="color: rgb(175,238,237)">&#120026;&#120042;&#120067;&#120062;&#120054;&#120042; &#120018;&#120056;&#120054;&#120054;&#120042;&#120055;&#120045;&#120046;&#120059;(☭)™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137622336831532" id="message-768137622336831532">
+                <div class="chatlog__content">
+                    <div class="markdown">now this server is complete </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768137628989128714" id="message-768137628989128714">
+                <div class="chatlog__content">
+                    <div class="markdown">woooooooo </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="768139024564092970" id="message-768139024564092970">
+                <div class="chatlog__content">
+                    <div class="markdown">great? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 10:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="768772323854909440" id="message-768772323854909440">
+                <div class="chatlog__content">
+                    <div class="markdown">Balls </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 02:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="768821506432040990" id="message-768821506432040990">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="color: rgb(47, 176, 21); background-color: rgba(47, 176, 21, 0.1);">@Want to be pinged</span> i did
+Did the thing </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/Screenshot_20201022-150124.jpg">
+                                    <img class="chatlog__attachment-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/Screenshot_20201022-150124.jpg" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/f9ace63658651e8776c23d3cec7a376a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kat (Dapper)#0746" data-user-id="387415170982477824" style="color: rgb(151,156,159)">A seal with a gf :sunglasses:</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 02:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="768821848338202624" id="message-768821848338202624">
+                <div class="chatlog__content">
+                    <div class="markdown">@John </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="768903341887193119" id="message-768903341887193119">
+                <div class="chatlog__content">
+                    <div class="markdown">nice <span class="chatlog__edited-timestamp" title="22-Oct-20 07:27 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/f9ace63658651e8776c23d3cec7a376a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kat (Dapper)#0746" data-user-id="387415170982477824" style="color: rgb(151,156,159)">A seal with a gf :sunglasses:</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="768905035844419618" id="message-768905035844419618">
+                <div class="chatlog__content">
+                    <div class="markdown">@John </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768905068820299827" id="message-768905068820299827">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511">@&#128017;Sheep-kun; SheepCommander☭&#127913;</span> I still can&#39;t ping john </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-vips%20%5B765991195029274635%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="768905139813613588" id="message-768905139813613588">
+                <div class="chatlog__content">
+                    <div class="markdown">mmmmm </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 90 message(s)</div>
+</div>
+
+</body>
+</html>

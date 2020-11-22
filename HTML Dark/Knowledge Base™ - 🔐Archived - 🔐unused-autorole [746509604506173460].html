@@ -1,0 +1,1759 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Knowledge Base™ - &#128272;unused-autorole</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/a56bcbda5ea1db3e101c6895440d1c5b.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Knowledge Base™</div>
+        <div class="preamble__entry">&#128272;Archived / &#128272;unused-autorole</div>
+
+            <div class="preamble__entry preamble__entry--small">Assign roles here!</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Aug-20 03:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="746549862925074533" id="message-746549862925074533">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Assign Notify Roles!</strong>
+
+React with <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> to be notified when there&#39;s a vote involving the server!
+React with <img class="emoji " alt="Minecraft" title="Minecraft" src="https://cdn.discordapp.com/emojis/742862595781951494.png"> to be notified when there&#39;s a change to Minecraft or similar!
+React with <img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png"> to be notified when there&#39;s a Joke/Unrelated vote!
+React with <img class="emoji " alt="upvote" title="upvote" src="https://cdn.discordapp.com/emojis/746746280000094260.png"> to be notified when you can &quot;Bump&quot; (Support) Knowledge Base!
+React with <img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"> to be notified when there&#39;s a New Join (Only works if you don&#39;t have <span class="mention">#&#128034;welcome</span> hidden)
+React with <img class="emoji " alt="🤡" title="🤡" src="https://twemoji.maxcdn.com/2/72x72/1f921.png"> to be notified when there&#39;s a GULAG sentence
+React with <img class="emoji " alt="📰" title="📰" src="https://twemoji.maxcdn.com/2/72x72/1f4f0.png"> to be notified when there&#39;s a Big Argument/Controversy <span class="chatlog__edited-timestamp" title="02-Oct-20 07:35 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">48</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Minecraft" title="Minecraft" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/742862595781951494.png">
+                                <span class="chatlog__reaction-count">52</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129300;" title="&#129300;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f914.png">
+                                <span class="chatlog__reaction-count">30</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="knowledge_book" title="knowledge_book" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/745301462925574266.png">
+                                <span class="chatlog__reaction-count">17</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128056;" title="&#128056;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f438.png">
+                                <span class="chatlog__reaction-count">11</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="upvote" title="upvote" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/746746280000094260.png">
+                                <span class="chatlog__reaction-count">12</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128075;" title="&#128075;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f44b.png">
+                                <span class="chatlog__reaction-count">7</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129313;" title="&#129313;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f921.png">
+                                <span class="chatlog__reaction-count">10</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128240;" title="&#128240;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f4f0.png">
+                                <span class="chatlog__reaction-count">10</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="746549936962666566" id="message-746549936962666566">
+                <div class="chatlog__content">
+                    <div class="markdown">​ </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="746550029027901560" id="message-746550029027901560">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Hide Channels!</strong>
+
+React with <img class="emoji " alt="carlsmile" title="carlsmile" src="https://cdn.discordapp.com/emojis/739593241393102848.png"> to hide <span class="mention">#&#128034;welcome</span> from view
+React with <img class="emoji " alt="💡" title="💡" src="https://twemoji.maxcdn.com/2/72x72/1f4a1.png"> to hide <span class="mention">#&#128161;suggestions</span> and <span class="mention">#✅reviewed-suggestions</span> from view
+React with <img class="emoji " alt="🔊" title="🔊" src="https://twemoji.maxcdn.com/2/72x72/1f50a.png"> to hide VC Channels Category <span class="chatlog__edited-timestamp" title="15-Oct-20 09:32 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="CarlBotuwu" title="CarlBotuwu" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/739593241393102848.png">
+                                <span class="chatlog__reaction-count">57</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128161;" title="&#128161;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f4a1.png">
+                                <span class="chatlog__reaction-count">18</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128266;" title="&#128266;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f50a.png">
+                                <span class="chatlog__reaction-count">20</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="746550031984885852" id="message-746550031984885852">
+                <div class="chatlog__content">
+                    <div class="markdown">​ </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="746550075118845962" id="message-746550075118845962">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Reveal Channels!</strong>
+
+React with <img class="emoji " alt="Blue" title="Blue" src="https://cdn.discordapp.com/emojis/740268927904383097.png"> to reveal <span class="mention">#&#128153;blue-faq</span> (For people on BlueCommander&#39;s discord)
+React with <img class="emoji " alt="carlbot" title="carlbot" src="https://cdn.discordapp.com/emojis/739593241393102848.png"> to reveal Carl&#39;s logging channels (basically a second Audit Log)
+React with <img class="emoji " alt="🔐" title="🔐" src="https://twemoji.maxcdn.com/2/72x72/1f510.png"> to reveal Archived Channels! <span class="chatlog__edited-timestamp" title="13-Oct-20 06:49 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="blue" title="blue" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/490589533382115331.png">
+                                <span class="chatlog__reaction-count">58</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="CarlBotuwu" title="CarlBotuwu" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/739593241393102848.png">
+                                <span class="chatlog__reaction-count">47</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128272;" title="&#128272;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f510.png">
+                                <span class="chatlog__reaction-count">34</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="746550077996400712" id="message-746550077996400712">
+                <div class="chatlog__content">
+                    <div class="markdown">​ </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="746550101505474650" id="message-746550101505474650">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Tell us if you&#39;re alright with being pinged!</strong>
+
+React with ✅ to tell us you&#39;re <span class="mention" style="color: rgb(47, 176, 21); background-color: rgba(47, 176, 21, 0.1);">@Alright with being pinged</span> 
+React with ❌ to tell us you <span class="mention" style="color: rgb(153, 45, 34); background-color: rgba(153, 45, 34, 0.1);">@Don&#39;t like to be pinged</span>
+React with <img class="emoji " alt="🧠" title="🧠" src="https://twemoji.maxcdn.com/2/72x72/1f9e0.png"> to tell us you <span class="mention" style="color: rgb(47, 176, 21); background-color: rgba(47, 176, 21, 0.1);">@Want to be pinged</span> (<strong>WARNING:</strong> This role is pingable and you may recieve random pings, don&#39;t complain) <span class="chatlog__edited-timestamp" title="24-Sep-20 12:23 AM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="✅" title="✅" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/2705.png">
+                                <span class="chatlog__reaction-count">94</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❌" title="❌" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/274c.png">
+                                <span class="chatlog__reaction-count">42</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129504;" title="&#129504;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f9e0.png">
+                                <span class="chatlog__reaction-count">8</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">13-Sep-20 05:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="754745955974250516" id="message-754745955974250516">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Assign Pingable Roles!</strong>
+
+React with <img class="emoji " alt="📂" title="📂" src="https://twemoji.maxcdn.com/2/72x72/1f4c2.png"> to assign a pingable role <span class="mention" style="">@Resource Pack Help Ping</span>
+React with ❓ to assign a pingable role <span class="mention" style="">@Command Help Ping</span>
+React with ❔ to assign a pingable role <span class="mention" style="">@DataPack Help Ping</span>
+React with <img class="emoji " alt="🗺" title="🗺" src="https://twemoji.maxcdn.com/2/72x72/1f5fa.png">️ to assign a pingable role <span class="mention" style="">@Worldgen Help Ping</span> <span class="chatlog__edited-timestamp" title="06-Oct-20 04:48 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128194;" title="&#128194;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f4c2.png">
+                                <span class="chatlog__reaction-count">28</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❓" title="❓" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/2753.png">
+                                <span class="chatlog__reaction-count">38</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❔" title="❔" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/2754.png">
+                                <span class="chatlog__reaction-count">35</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128506;️" title="&#128506;️" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f5fa.png">
+                                <span class="chatlog__reaction-count">8</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Sep-20 05:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="755467722183278702" id="message-755467722183278702">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Choose your prefferred Pronoun!</strong>
+
+React with <img class="emoji " alt="🇭" title="🇭" src="https://twemoji.maxcdn.com/2/72x72/1f1ed.png"> so we know to call you <span class="mention" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@He/Him [Pronoun]</span> 
+React with <img class="emoji " alt="🇸" title="🇸" src="https://twemoji.maxcdn.com/2/72x72/1f1f8.png"> so we know to call you <span class="mention" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@She/Her [Pronoun]</span> 
+React with <img class="emoji " alt="🇹" title="🇹" src="https://twemoji.maxcdn.com/2/72x72/1f1f9.png"> so we know to call you <span class="mention" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@They/Them [Pronoun]</span> 
+React with <img class="emoji " alt="🇴" title="🇴" src="https://twemoji.maxcdn.com/2/72x72/1f1f4.png"> so we know to call you <span class="mention" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@It/Other [Pronoun]</span> <span class="chatlog__edited-timestamp" title="15-Sep-20 06:02 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127469;" title="&#127469;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f1ed.png">
+                                <span class="chatlog__reaction-count">74</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127480;" title="&#127480;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f1f8.png">
+                                <span class="chatlog__reaction-count">16</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127481;" title="&#127481;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f1f9.png">
+                                <span class="chatlog__reaction-count">10</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127476;" title="&#127476;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f1f4.png">
+                                <span class="chatlog__reaction-count">13</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 09:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="758059493669077063" id="message-758059493669077063">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>Tell us what version of MineCraft you use!</strong>
+
+React with <img class="emoji " alt="java" title="java" src="https://cdn.discordapp.com/emojis/755225016605343776.png"> if you&#39;re an <span class="mention" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@MineCraft Java User</span> 
+React with <img class="emoji " alt="bedrock" title="bedrock" src="https://cdn.discordapp.com/emojis/755225016970510416.png"> if you&#39;re an <span class="mention" style="">@deleted-role</span> </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="java" title="java" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016605343776.png">
+                                <span class="chatlog__reaction-count">81</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="bedrock" title="bedrock" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016970510416.png">
+                                <span class="chatlog__reaction-count">14</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="raspberry_pi" title="raspberry_pi" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/758217803098095656.png">
+                                <span class="chatlog__reaction-count">7</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="this" title="this" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/732928528055795753.png">
+                                <span class="chatlog__reaction-count">4</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Minecraft" title="Minecraft" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/742862595781951494.png">
+                                <span class="chatlog__reaction-count">5</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-20 07:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="760565163194843217" id="message-760565163194843217">
+                <div class="chatlog__content">
+                    <div class="markdown">------------------------------------------------​
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+
+BEFORE PROCEEDING READ THE NOTE AT THE BOTTOM:
+
+​
+
+<strong>NOTE:</strong>
+• A lot of the roles that reveal channels don&#39;t work properly without <span class="mention" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Verified/Agreed to rules</span> role
+• <strong>Reaction Role not working?</strong> Unreact and re-react to fix it.
+• <strong>Stil doesn&#39;t work?</strong> That means <span class="mention" title="Carl-bot#1536">@Carl-bot (!)</span> is down. You&#39;ll have to wait until he&#39;s back up.
+------------------------------------------------​ <span class="chatlog__edited-timestamp" title="29-Sep-20 07:15 PM">(edited)</span></div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="mickraowav" title="mickraowav" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/747249725341958144.png">
+                                <span class="chatlog__reaction-count">14</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426778037256213" id="message-766426778037256213">
+                <div class="chatlog__content">
+                    <div class="markdown">e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="766426798304526349" id="message-766426798304526349">
+                <div class="chatlog__content">
+                    <div class="markdown">This channel is longer in use </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="766426810295517184" id="message-766426810295517184">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr help </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426810346635335" id="message-766426810346635335">
+                <div class="chatlog__content">
+                    <div class="markdown"> <span class="chatlog__edited-timestamp" title="15-Oct-20 11:26 PM">(edited)</span></div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(114,137,218,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+                                        <div class="chatlog__embed-author">
+
+                                                <span class="chatlog__embed-author-name">
+Page 5/9 (35 commands)                                                </span>
+                                        </div>
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">[reactrole|reactionrole|rr]</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Reaction based roles is an intuitive way to offer your members the ability to add and remove roles to themselves. If you&#39;re just getting started using reaction roles, you&#39;re probably best off using !rr make</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">reactrole limit &lt;msg&gt; &lt;limit&gt;</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">Limits the number of roles you can pick up from one message at once.</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">reactrole link [messages...]</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">By linking two messages together, only one role from either message can be self-assigned. If you have 30 color roles for instance, linking the two messages together (since the limit is 20/message) allows a smooth, user-friendly experience when picking up roles. More than two messages can be linked together by using the same command a second time.</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">reactrole links</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">Shows the currently linked messages</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">reactrole lock &lt;msg&gt;</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">Locks a message and stops it handing out any roles.</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+Use &quot;!help command&quot; for more info on a command.
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426901308637187" id="message-766426901308637187">
+                <div class="chatlog__content">
+                    <div class="markdown">oh wait </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="766426944333807637" id="message-766426944333807637">
+                <div class="chatlog__content">
+                    <div class="markdown">foudn it </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="766426974464770068" id="message-766426974464770068">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 746549862925074533 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426974868471848" id="message-766426974868471848">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426988323668008" id="message-766426988323668008">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 746550029027901560 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766426990248722432" id="message-766426990248722432">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427023059976222" id="message-766427023059976222">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 746550075118845962 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427023861219338" id="message-766427023861219338">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427068555853915" id="message-766427068555853915">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 746550101505474650 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427069592109083" id="message-766427069592109083">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427103339085834" id="message-766427103339085834">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 754745955974250516 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427105873362964" id="message-766427105873362964">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427131600699413" id="message-766427131600699413">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 755467722183278702 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427134033920022" id="message-766427134033920022">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427152848650272" id="message-766427152848650272">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 758059493669077063 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427153478451205" id="message-766427153478451205">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427182025015356" id="message-766427182025015356">
+                <div class="chatlog__content">
+                    <div class="markdown">!rr lock 758059493669077063 </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="no" title="no" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016898945047.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/cececd50fdc87b29929e65c768f24ad6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Carl-bot#1536" data-user-id="235148962103951360" style="color: rgb(46,204,113)">Carl-bot</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">15-Oct-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427182313766912" id="message-766427182313766912">
+                <div class="chatlog__content">
+                    <div class="markdown">That message is now locked. </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="no" title="no" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016898945047.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 11:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="766427195559903263" id="message-766427195559903263">
+                <div class="chatlog__content">
+                    <div class="markdown">Good job </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="no" title="no" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016898945047.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="766427219379355658" id="message-766427219379355658">
+                <div class="chatlog__content">
+                    <div class="markdown">autorole is officially out of service </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="no" title="no" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/755225016898945047.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="4️⃣" title="4️⃣" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-autorole%20%5B746509604506173460%5D.html_Files/34-20e3.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 35 message(s)</div>
+</div>
+
+</body>
+</html>

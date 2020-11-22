@@ -1,0 +1,518 @@
+{
+  "comment": "The versions section is only for documentation, it isn't actually used. The real versioning code is in comp_gen.py.",
+  "versions": [{
+      "number": 1,
+      "name": "V0.1",
+      "color": "red"
+    },
+    {
+      "number": 2,
+      "name": "V0.2",
+      "color": "orange"
+    },
+    {
+      "number": 3,
+      "name": "V0.3",
+      "color": "yellow"
+    },
+    {
+      "number": 3.1,
+      "name": "V0.3.1",
+      "color": "yellow"
+    },
+    {
+      "number": 3.2,
+      "name": "V0.3.2",
+      "color": "yellow"
+    },
+    {
+      "number": 4,
+      "name": "V0.4",
+      "color": "green"
+    }
+  ],
+  "entries": [{
+      "id": "boomerang",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "cracked_nether_star",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "witch_hat",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "swordfish",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "wrench",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "rotten_porkchop",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "obsidian_shard",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "obsidian_mirror",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "obsidian_scythe",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "spyglass",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "quest_book",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "peculiar_berries",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "tipped_swords",
+      "version": 1,
+      "type": "item",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "soaked_rings",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "iron_ring",
+      "version": 1,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "golden_ring",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "ancient_acorn",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "bat_wing",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "levitation_suspicious_stew",
+      "version": 2,
+      "type": "item",
+      "tweak": true,
+      "recipe": true
+    },
+    {
+      "id": "muffin",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "apple_pie",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "golden_apple_pie",
+      "version": 2,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "elytra_closing",
+      "version": 2,
+      "type": "item",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "charged_music_disc",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "spectral_boomerang",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "enchanted_golden_carrot",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "cursed_crown",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "gemstones",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "pristine_gemstones",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "diamond_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "emerald_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "ender_pearl_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "lapis_lazuli_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "obsidian_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "prismarine_crystal_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "quartz_gemstone",
+      "version": 3,
+      "type": "item",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "paintbrush",
+      "version": 3.2,
+      "type": "item",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "totem_changes",
+      "version": 3,
+      "type": "item",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "block_breakers",
+      "version": 1,
+      "type": "block",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "heads",
+      "version": 1,
+      "type": "block",
+      "tweak": true,
+      "recipe": true
+    },
+    {
+      "id": "player_hoppers",
+      "version": 3,
+      "type": "block",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "jewelry_table",
+      "version": 3,
+      "type": "block",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "nether_reactor",
+      "version": 3,
+      "type": "block",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "climbable_chains",
+      "version": 3,
+      "type": "block",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "anvil_smashing",
+      "version": 3,
+      "type": "block",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "better_recipes",
+      "version": 1,
+      "type": "recipe",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "chain_recipes",
+      "version": 1,
+      "type": "recipe",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "coral_recipes",
+      "version": 2,
+      "type": "recipe",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "trident_repair",
+      "version": 2,
+      "type": "recipe",
+      "tweak": false,
+      "recipe": true
+    },
+    {
+      "id": "enchanted_golden_apple_recipe",
+      "version": 3,
+      "type": "recipe",
+      "tweak": true,
+      "recipe": true
+    },
+    {
+      "id": "soul_sand_smelting",
+      "version": 3.1,
+      "type": "recipe",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "obsidian_recipes",
+      "version": 3.1,
+      "type": "recipe",
+      "tweak": false,
+      "recipe": false
+    },
+    {
+      "id": "durability_enchantments",
+      "version": 2,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "thorns_enchantment",
+      "version": 3,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "flame_enchantment",
+      "version": 3,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "channeling_enchantment",
+      "version": 3,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "silk_touch_enchantment",
+      "version": 3,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "fortune_shovels",
+      "version": 3,
+      "type": "enchantment",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "cats_hate_water",
+      "version": 1,
+      "type": "entity",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "squid_ink_blindness",
+      "version": 1,
+      "type": "entity",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "end_crystal_changes",
+      "version": 1,
+      "type": "entity",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "new_villager_trades",
+      "version": 3,
+      "type": "entity",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "loot_table_changes",
+      "version": 1,
+      "type": "loot_table",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "drowned_loot_edits",
+      "version": 2,
+      "type": "loot_table",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "biome_based_fishing",
+      "version": 2,
+      "type": "loot_table",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "pigstep_from_piglins",
+      "version": 3,
+      "type": "loot_table",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "grace_potions",
+      "version": 3.1,
+      "type": "loot_table",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "absorption_changes",
+      "version": 3,
+      "type": "potion",
+      "tweak": true,
+      "recipe": false
+    },
+    {
+      "id": "emoji",
+      "version": 3,
+      "type": "chat",
+      "tweak": false,
+      "recipe": false
+    }
+  ]
+}

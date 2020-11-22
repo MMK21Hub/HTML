@@ -1,0 +1,4007 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Knowledge Base™ - &#128272;unused-help-chat-4</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a56bcbda5ea1db3e101c6895440d1c5b.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Knowledge Base™</div>
+        <div class="preamble__entry">&#128272;Archived / &#128272;unused-help-chat-4</div>
+
+            <div class="preamble__entry preamble__entry--small">Ask for help here! Ping @Command Help Ping, @Resource Pack Help Pack, @DataPack Help Ping, @World Gen Help Ping as needed</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 04:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="763066541301563423" id="message-763066541301563423">
+                <div class="chatlog__content">
+                    <div class="markdown"><strong>NOTE</strong>: Not many people here know Worldgen that well. 
+
+If no one helps you here, try asking in these discord servers:
+<a href="https://discord.gg/BuBGds9">https://discord.gg/BuBGds9</a>
+<a href="https://discord.gg/4QGNQmZ">https://discord.gg/4QGNQmZ</a>
+<a href="https://discord.gg/vK29JDG">https://discord.gg/vK29JDG</a>
+<a href="https://discord.gg/gQQKDQa">https://discord.gg/gQQKDQa</a> <span class="chatlog__edited-timestamp" title="06-Oct-20 06:02 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763066551506698271" id="message-763066551506698271">
+                <div class="chatlog__content">
+                    <div class="markdown">Pinned a message. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 05:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="763068617679699988" id="message-763068617679699988">
+                <div class="chatlog__content">
+                    <div class="markdown">Another one?! <img class="emoji " alt="wtfix" title="wtfix" src="https://cdn.discordapp.com/emojis/747143726685749268.png"> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763068686650441760" id="message-763068686650441760">
+                <div class="chatlog__content">
+                    <div class="markdown">there I added it to the list </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 06:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="763083607291592704" id="message-763083607291592704">
+                <div class="chatlog__content">
+                    <div class="markdown">you could also add incendium discord to the list because I regularly help people with worldgen there </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763083610211090442" id="message-763083610211090442">
+                <div class="chatlog__content">
+                    <div class="markdown">lol </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 06:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="763083680549437460" id="message-763083680549437460">
+                <div class="chatlog__content">
+                    <div class="markdown">may as well I guess </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763083779933077534" id="message-763083779933077534">
+                <div class="chatlog__content">
+                    <div class="markdown">Also the link you gave me for Minecraft Config is that a perm link or a day link? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 06:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="763083809381285921" id="message-763083809381285921">
+                <div class="chatlog__content">
+                    <div class="markdown">Permanent </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 06:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="763083822295285791" id="message-763083822295285791">
+                <div class="chatlog__content">
+                    <div class="markdown">k thx </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 03:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="763950469395382303" id="message-763950469395382303">
+                <div class="chatlog__content">
+                    <div class="markdown">mc config is really nice :D </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 03:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="763954841625690153" id="message-763954841625690153">
+                <div class="chatlog__content">
+                    <div class="markdown">yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="763994850999533569" id="message-763994850999533569">
+                <div class="chatlog__content">
+                    <div class="markdown">anyone else here happen to have an extremely technical understanding of jigsaws </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763994879272419328" id="message-763994879272419328">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/image0.png">
+                                    <img class="chatlog__attachment-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/image0.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763994912399032340" id="message-763994912399032340">
+                <div class="chatlog__content">
+                    <div class="markdown">because I&#39;m completely stumped as to why this doesn&#39;t work </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="763996529161142293" id="message-763996529161142293">
+                <div class="chatlog__content">
+                    <div class="markdown"><em>that sad moment when you&#39;re the only expert</em> <span class="chatlog__edited-timestamp" title="09-Oct-20 06:29 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763996683809587200" id="message-763996683809587200">
+                <div class="chatlog__content">
+                    <div class="markdown">since I don&#39;t know what you mean Imma assume this has to do with Worldgen and the Jigsaw block, maybe try MCC <span class="chatlog__edited-timestamp" title="09-Oct-20 06:32 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997119794380820" id="message-763997119794380820">
+                <div class="chatlog__content">
+                    <div class="markdown">I asked on mcc, nothing yet. Just seeing if anybody knows </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997260627312650" id="message-763997260627312650">
+                <div class="chatlog__content">
+                    <div class="markdown">makes sense </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997313948975114" id="message-763997313948975114">
+                <div class="chatlog__content">
+                    <div class="markdown">The issue has to do with a jigsaw being part of two bounding boxes and generating a structure into another bounding box. This shouldn&#39;t violate the block intersection rule or the partial intersection rule so I don&#39;t understand what&#39;s preventing it from generating </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997391971811328" id="message-763997391971811328">
+                <div class="chatlog__content">
+                    <div class="markdown"><em>too bad I don&#39;t know these rules</em> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997490012749834" id="message-763997490012749834">
+                <div class="chatlog__content">
+                    <div class="markdown">n o b o d y d o e s </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997559257169940" id="message-763997559257169940">
+                <div class="chatlog__content">
+                    <div class="markdown">not even Mojang </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763997622876504074" id="message-763997622876504074">
+                <div class="chatlog__content">
+                    <div class="markdown">the secrets were sealed away when Jens and Agnes starved on a mountain </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 06:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="763997641704079360" id="message-763997641704079360">
+                <div class="chatlog__content">
+                    <div class="markdown">lol </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763997712223567883" id="message-763997712223567883">
+                <div class="chatlog__content">
+                    <div class="markdown">jigsaw code is all entirely in 1 method </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 07:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="764012273051369493" id="message-764012273051369493">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="thonkjang" title="thonkjang" src="https://cdn.discordapp.com/emojis/524402378842046488.png"> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 02:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="764114843137343549" id="message-764114843137343549">
+                <div class="chatlog__content">
+                    <div class="markdown">oh god jigsaws </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764114884471554069" id="message-764114884471554069">
+                <div class="chatlog__content">
+                    <div class="markdown">the only block idk how it works </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 02:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="764115253729427456" id="message-764115253729427456">
+                <div class="chatlog__content">
+                    <div class="markdown">jigsaw are amazing </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764115303708753950" id="message-764115303708753950">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/image0%20%281%29.png">
+                                    <img class="chatlog__attachment-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/image0%20%281%29.png" alt="Attachment">
+                            </a>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 02:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="764122095272984596" id="message-764122095272984596">
+                <div class="chatlog__content">
+                    <div class="markdown">yes that much i can see </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 08:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="764215533506789478" id="message-764215533506789478">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Microwave#9512">@Microwave</span> hi </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764215555556376577" id="message-764215555556376577">
+                <div class="chatlog__content">
+                    <div class="markdown">I hear you are having worldgen issues </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764215580210888745" id="message-764215580210888745">
+                <div class="chatlog__content">
+                    <div class="markdown">Show me your logs please </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="764215639908810793" id="message-764215639908810793">
+                <div class="chatlog__content">
+                    <div class="markdown">Not worldgen </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764215740093562920" id="message-764215740093562920">
+                <div class="chatlog__content">
+                    <div class="markdown">I am trying to implement a new <em>custom</em> dimension using datapacks </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764215782103449641" id="message-764215782103449641">
+                <div class="chatlog__content">
+                    <div class="markdown">Normally you have 3:
+Overworld
+End
+Nether </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="764215806300389387" id="message-764215806300389387">
+                <div class="chatlog__content">
+                    <div class="markdown">Isn’t a custom dimension world gen </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="764215823333064704" id="message-764215823333064704">
+                <div class="chatlog__content">
+                    <div class="markdown">I am trying to add another, for performance issues </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764215895655448586" id="message-764215895655448586">
+                <div class="chatlog__content">
+                    <div class="markdown">I don&#39;t think it is... </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216012928581694" id="message-764216012928581694">
+                <div class="chatlog__content">
+                    <div class="markdown">Well I mean your generating a dimension which is part of the world so world gen? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216106994368522" id="message-764216106994368522">
+                <div class="chatlog__content">
+                    <div class="markdown">Adding a dimension is worldgen </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216108311380039" id="message-764216108311380039">
+                <div class="chatlog__content">
+                    <div class="markdown">any ways starmoot said to share your logs </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216129789886504" id="message-764216129789886504">
+                <div class="chatlog__content">
+                    <div class="markdown">I am not generating one. Actually I am adding one manually in the game files </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764216148098809886" id="message-764216148098809886">
+                <div class="chatlog__content">
+                    <div class="markdown">uh ok </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764216166738427924" id="message-764216166738427924">
+                <div class="chatlog__content">
+                    <div class="markdown">Idk I am kinda new </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764216212686635048" id="message-764216212686635048">
+                <div class="chatlog__content">
+                    <div class="markdown">So don&#39;t go harsh on me. <em>please</em> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216236238176296" id="message-764216236238176296">
+                <div class="chatlog__content">
+                    <div class="markdown">I think it still is worldgen </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216237001539626" id="message-764216237001539626">
+                <div class="chatlog__content">
+                    <div class="markdown">It’s fine </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216353166590002" id="message-764216353166590002">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">So don&#39;t go harsh on me. <em>please</em>
+</div><span class="mention" title="Microwave#9512">@Microwave</span> I do not know how it works so. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216417020018729" id="message-764216417020018729">
+                <div class="chatlog__content">
+                    <div class="markdown">you need to do what starmoot tells you because they are like one of the only people here that knows how to do world gen </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216477019799552" id="message-764216477019799552">
+                <div class="chatlog__content">
+                    <div class="markdown">I am gonna research on this subject a bit </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">09-Oct-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216478140071976" id="message-764216478140071976">
+                <div class="chatlog__content">
+                    <div class="markdown">Microwave#9512 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">1</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d0d07d3c0a4b77b474a613318518bbe.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="C0D3Crafter#9624" data-user-id="458885976509644810" style="color: rgb(47,176,21)">C0D3Crafter</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="764216678753370173" id="message-764216678753370173">
+                <div class="chatlog__content">
+                    <div class="markdown">Are you going to share your logs <span class="mention" title="Microwave#9512">@Microwave</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217051614412822" id="message-764217051614412822">
+                <div class="chatlog__content">
+                    <div class="markdown">sure. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764217078005628998" id="message-764217078005628998">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+                    <div class="chatlog__attachment">
+                            <a href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/latest.log">
+Attachment: latest.log (18.64 KB)                            </a>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764217114650607627" id="message-764217114650607627">
+                <div class="chatlog__content">
+                    <div class="markdown">I haven&#39;t relaunched minecraft since </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217397816197131" id="message-764217397816197131">
+                <div class="chatlog__content">
+                    <div class="markdown">You were using OptiFine </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764217434847838208" id="message-764217434847838208">
+                <div class="chatlog__content">
+                    <div class="markdown">That <em>may</em> be the problem </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217639361839126" id="message-764217639361839126">
+                <div class="chatlog__content">
+                    <div class="markdown">It didn&#39;t crash my game or anything. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764217738062594099" id="message-764217738062594099">
+                <div class="chatlog__content">
+                    <div class="markdown">The <em>custom</em> dimension just didn&#39;t show up in the /execute command </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764217883122466856" id="message-764217883122466856">
+                <div class="chatlog__content">
+                    <div class="markdown">/execute in <em>overworld</em>
+                       <em>nether</em>
+                        <em>end</em> <span class="chatlog__edited-timestamp" title="09-Oct-20 09:09 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217888839041094" id="message-764217888839041094">
+                <div class="chatlog__content">
+                    <div class="markdown">Idk. OptiFine sometimes messes things up. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217950508679169" id="message-764217950508679169">
+                <div class="chatlog__content">
+                    <div class="markdown">it should have another one but it did not </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="764217992329560085" id="message-764217992329560085">
+                <div class="chatlog__content">
+                    <div class="markdown">Try without OptiFine </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="764218004665794581" id="message-764218004665794581">
+                <div class="chatlog__content">
+                    <div class="markdown">ok </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Pablo#1981" data-user-id="299939361171177472" style="color: rgb(47,176,21)">Pablo</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="764218044801089557" id="message-764218044801089557">
+                <div class="chatlog__content">
+                    <div class="markdown">If it still doesn&#39;t work. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764218054112313344" id="message-764218054112313344">
+                <div class="chatlog__content">
+                    <div class="markdown">Idk </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="764218265417023548" id="message-764218265417023548">
+                <div class="chatlog__content">
+                    <div class="markdown">That&#39;s not a helpful log <span class="mention" title="Microwave#9512">@Microwave</span> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="764218279195181116" id="message-764218279195181116">
+                <div class="chatlog__content">
+                    <div class="markdown">Show me the log when you load the world </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/5fc81b127d21d98640a057f3335bf2ed.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Microwave#9512" data-user-id="509789981720444938" style="color: rgb(47,176,21)">Microwave</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="764218795849285672" id="message-764218795849285672">
+                <div class="chatlog__content">
+                    <div class="markdown">I fixed it, it was not worldgen </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">09-Oct-20 09:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="764219121155571744" id="message-764219121155571744">
+                <div class="chatlog__content">
+                    <div class="markdown">alright </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="766728251392393236" id="message-766728251392393236">
+                <div class="chatlog__content">
+                    <div class="markdown">anyone got a good jigsaw tutorial? <span class="chatlog__edited-timestamp" title="16-Oct-20 07:24 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Oct-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="766728252437692456" id="message-766728252437692456">
+                <div class="chatlog__content">
+                    <div class="markdown">foof#3527 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">8</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="766728381256826891" id="message-766728381256826891">
+                <div class="chatlog__content">
+                    <div class="markdown">I&#39;m pretty sure I&#39;ve seen some before on YT </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="766728440023613470" id="message-766728440023613470">
+                <div class="chatlog__content">
+                    <div class="markdown">google time </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">16-Oct-20 07:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="766728517693866024" id="message-766728517693866024">
+                <div class="chatlog__content">
+                    <div class="markdown">indeed </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">17-Oct-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="766894703135424526" id="message-766894703135424526">
+                <div class="chatlog__content">
+                    <div class="markdown">anyone know how to get like villages or smthn to generate </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">17-Oct-20 06:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="766895274400415774" id="message-766895274400415774">
+                <div class="chatlog__content">
+                    <div class="markdown">Pretty sure that falls under the &quot;Generate structures&quot; option when creating a world </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/6f2184dceaae7dab1e870e3f8b48c505.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TimothyWiggins127#5840" data-user-id="379325027104849921" style="">TimothyWiggins127</span>
+
+
+        <span class="chatlog__timestamp">18-Oct-20 09:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="767297436598272031" id="message-767297436598272031">
+                <div class="chatlog__content">
+                    <div class="markdown">-snip-
+
+  &quot;precipitation&quot;: &quot;rain&quot;,
+  &quot;temperature&quot;: 0.8,
+  &quot;downfall&quot;: 0.4,
+  &quot;category&quot;: &quot;savanna&quot;,
+  &quot;depth&quot;: 0.125
+}
+
+I&#39;ve made these changes to the Savanna biome file in my datapack, and there&#39;s still no rain :/ <span class="chatlog__edited-timestamp" title="18-Oct-20 09:06 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="767297515287871488" id="message-767297515287871488">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="">@Worldgen Help Ping</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">18-Oct-20 02:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="767380397851934721" id="message-767380397851934721">
+                <div class="chatlog__content">
+                    <div class="markdown">Temperature might be too high </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/6f2184dceaae7dab1e870e3f8b48c505.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TimothyWiggins127#5840" data-user-id="379325027104849921" style="">TimothyWiggins127</span>
+
+
+        <span class="chatlog__timestamp">18-Oct-20 04:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="767401760246726667" id="message-767401760246726667">
+                <div class="chatlog__content">
+                    <div class="markdown">I copied the precipitation, temperature, and downfall values from the plains biome </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">18-Oct-20 04:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="767410533719867402" id="message-767410533719867402">
+                <div class="chatlog__content">
+                    <div class="markdown">Change category to forest and see what happens </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/6f2184dceaae7dab1e870e3f8b48c505.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TimothyWiggins127#5840" data-user-id="379325027104849921" style="">TimothyWiggins127</span>
+
+
+        <span class="chatlog__timestamp">18-Oct-20 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="767455626174398496" id="message-767455626174398496">
+                <div class="chatlog__content">
+                    <div class="markdown">Still nothing. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="767455714279948288" id="message-767455714279948288">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://bugs.mojang.com/browse/MC-187904">https://bugs.mojang.com/browse/MC-187904</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="767455756764053556" id="message-767455756764053556">
+                <div class="chatlog__content">
+                    <div class="markdown">I guess this bug effects rainfall editing, too. <span class="chatlog__edited-timestamp" title="19-Oct-20 01:01 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="768136930143109181" id="message-768136930143109181">
+                <div class="chatlog__content">
+                    <div class="markdown">and here </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768137381324128277" id="message-768137381324128277">
+                <div class="chatlog__content">
+                    <div class="markdown">i can xray without xray </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768137514837737532" id="message-768137514837737532">
+                <div class="chatlog__content">
+                    <div class="markdown">ive learned everything about how the world is generated, but i cannot generate the terrain </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="768139162216824853" id="message-768139162216824853">
+                <div class="chatlog__content">
+                    <div class="markdown">What? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="768139405558546492" id="message-768139405558546492">
+                <div class="chatlog__content">
+                    <div class="markdown">i don&#39;t need xray to know where ores are. and i can know what the layout of a woodland mansion&#39;s layout will be based on where the door is </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="768139648609681429" id="message-768139648609681429">
+                <div class="chatlog__content">
+                    <div class="markdown">Maybe I should be more specific, this is 1.16 world generation from DataPacks </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="768139788804554773" id="message-768139788804554773">
+                <div class="chatlog__content">
+                    <div class="markdown">oh, well if you need help predicting what a seed will look like, you know where to come </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="768140067411197953" id="message-768140067411197953">
+                <div class="chatlog__content">
+                    <div class="markdown">lol </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-20 04:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="768140658191892530" id="message-768140658191892530">
+                <div class="chatlog__content">
+                    <div class="markdown">i know what biome you&#39;ll spawn in as soon as i know the first 8 digits of a seed </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 12:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="768256823836016660" id="message-768256823836016660">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="HardHatNewt0082#0905">@HardHatNewt0082</span> do you have a way of predicting jigsaw generation? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">21-Oct-20 12:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="768256824645517312" id="message-768256824645517312">
+                <div class="chatlog__content">
+                    <div class="markdown">Starmute#7182 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">8</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 12:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="768256884397834283" id="message-768256884397834283">
+                <div class="chatlog__content">
+                    <div class="markdown">noh </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 12:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="768260860505227295" id="message-768260860505227295">
+                <div class="chatlog__content">
+                    <div class="markdown">f </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 03:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="768295069802299413" id="message-768295069802299413">
+                <div class="chatlog__content">
+                    <div class="markdown">Not that good. Sry </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 03:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="768300005747589130" id="message-768300005747589130">
+                <div class="chatlog__content">
+                    <div class="markdown">no problem, i just wanted to see if there was a way to bruteforce an ideal jigsaw structure </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-20 12:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="768436365813219358" id="message-768436365813219358">
+                <div class="chatlog__content">
+                    <div class="markdown">You can do it. It’s just that idk any of the technical terms </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 03:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="768849468337553449" id="message-768849468337553449">
+                <div class="chatlog__content">
+                    <div class="markdown">How can i delete a custom dimension? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 05:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="768877517380517899" id="message-768877517380517899">
+                <div class="chatlog__content">
+                    <div class="markdown">Not possible afaik </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="768899164104032267" id="message-768899164104032267">
+                <div class="chatlog__content">
+                    <div class="markdown">BRUH </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="768903430331695154" id="message-768903430331695154">
+                <div class="chatlog__content">
+                    <div class="markdown">OOF </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 04:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="770685569629290538" id="message-770685569629290538">
+                <div class="chatlog__content">
+                    <div class="markdown">is there any way to add a custom &quot;plant&quot; block and have it generate like grass in a custom biome?
+(the plant would basically just be a flower block but look different) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/0deae17d00170a249bca0d60ab3e7614.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HardHatNewt0082#0905" data-user-id="641259199011225610" style="color: rgb(47,176,21)">HardHatNewt0082</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="770759602937004093" id="message-770759602937004093">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah, its called adding a husk variable to the game&#39;s worldgen. good luck <span class="chatlog__edited-timestamp" title="27-Oct-20 09:24 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="770759731118604338" id="message-770759731118604338">
+                <div class="chatlog__content">
+                    <div class="markdown">wut </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="770760488656961566" id="message-770760488656961566">
+                <div class="chatlog__content">
+                    <div class="markdown">Hi! Im working on a datapack that radically changes minecraft combat system to include more stats such as crit chance, crit damage, dodge chance, knockback resistance and also includes elemental damage. The core system is done but the datapack still needs some work. Im looking for someone that knows how to make custom dimensions with features such as biomes, structures and naturally spawning mobs (with random loot). Bonus points if u are good at making custom guis with enderchests
+If u are interested dm me :)
+
+^^^^ if anyone could help me with this it would be poggers :) </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="770760532634501150" id="message-770760532634501150">
+                <div class="chatlog__content">
+                    <div class="markdown">yes i literally just copied this from mcc </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="770761593049972808" id="message-770761593049972808">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span> try <span class="mention">#&#127872;showcase&#129363;advertising</span> and read the Pinned message. Even on MCC that should be/would be taken down </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="770761690543292476" id="message-770761690543292476">
+                <div class="chatlog__content">
+                    <div class="markdown">i aready joined the worldgen discord serer </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="770761796583424010" id="message-770761796583424010">
+                <div class="chatlog__content">
+                    <div class="markdown">what? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="770761953983463480" id="message-770761953983463480">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span> I meant copy and paste to <span class="mention">#&#127872;showcase&#129363;advertising</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="770762203162738688" id="message-770762203162738688">
+                <div class="chatlog__content">
+                    <div class="markdown">oh </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="770762261555838997" id="message-770762261555838997">
+                <div class="chatlog__content">
+                    <div class="markdown">well how would that be inherent to showcase idk </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="770762390182035457" id="message-770762390182035457">
+                <div class="chatlog__content">
+                    <div class="markdown">OH GOD OH FUCK WHEN DID THEY BECOME ONE CHANNEL </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">27-Oct-20 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="770762746362724374" id="message-770762746362724374">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention">#&#128077;polls-announcements</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">30-Oct-20 03:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="771764615792295939" id="message-771764615792295939">
+                <div class="chatlog__content">
+                    <div class="markdown">how tf do i make a giant flower </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b0421e4b95153cedcb1293f3d251a9d9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DeathByAWaffle#5886" data-user-id="684243354644643898" style="color: rgb(47,176,21)">a[team=sexoffender]</span>
+
+
+        <span class="chatlog__timestamp">30-Oct-20 04:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="771767165510615100" id="message-771767165510615100">
+                <div class="chatlog__content">
+                    <div class="markdown">wut </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">30-Oct-20 04:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="771773783596859416" id="message-771773783596859416">
+                <div class="chatlog__content">
+                    <div class="markdown">?? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/a044f0e167bcf77c14481d364622c84f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="foof#3527" data-user-id="546057672546582547" style="color: rgb(138,203,162)">foof</span>
+
+
+        <span class="chatlog__timestamp">30-Oct-20 06:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="771802544803414016" id="message-771802544803414016">
+                <div class="chatlog__content">
+                    <div class="markdown">complex mushroom with more things? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="771802594552578049" id="message-771802594552578049">
+                <div class="chatlog__content">
+                    <div class="markdown">maybe tree </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="771802600587919451" id="message-771802600587919451">
+                <div class="chatlog__content">
+                    <div class="markdown">idk </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="771802662643433503" id="message-771802662643433503">
+                <div class="chatlog__content">
+                    <div class="markdown">maybe just a structure </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ed62869ba178e952b614b88a9a6ccc53.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VelVoxelRaptor#3437" data-user-id="489449334988079106" style="color: rgb(26,188,156)">VelVoxelRaptor</span>
+
+
+        <span class="chatlog__timestamp">31-Oct-20 03:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="772119491764420628" id="message-772119491764420628">
+                <div class="chatlog__content">
+                    <div class="markdown">You can generate an armor stand as a custom structure then cause that armor stand to spawn in a structure block for custom structures </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="772120349910630400" id="message-772120349910630400">
+                <div class="chatlog__content">
+                    <div class="markdown">Example <img class="emoji " alt="🤣" title="🤣" src="https://twemoji.maxcdn.com/2/72x72/1f923.png"> if this is allowed here: <a href="https://youtu.be/rkjpqfowkf4">https://youtu.be/rkjpqfowkf4</a> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">31-Oct-20 03:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="772120350846222386" id="message-772120350846222386">
+                <div class="chatlog__content">
+                    <div class="markdown">VelVoxelRaptor#3437 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">4</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-20 04:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="772321319467352105" id="message-772321319467352105">
+                <div class="chatlog__content">
+                    <div class="markdown">NO </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="772321329192894484" id="message-772321329192894484">
+                <div class="chatlog__content">
+                    <div class="markdown">NOOOOOOOOOO </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="772321393953734698" id="message-772321393953734698">
+                <div class="chatlog__content">
+                    <div class="markdown">Postgen is so bad </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">03-Nov-20 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="773284957753049118" id="message-773284957753049118">
+                <div class="chatlog__content">
+                    <div class="markdown">^ </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="773285002309271596" id="message-773285002309271596">
+                <div class="chatlog__content">
+                    <div class="markdown">its true bc starmoot said so </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">03-Nov-20 08:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="773285202034163724" id="message-773285202034163724">
+                <div class="chatlog__content">
+                    <div class="markdown">yes </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/9915e492e992fd3f568ff333e26943a9.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Starmute#7182" data-user-id="332701537535262720" style="color: rgb(26,188,156)">starmute</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 02:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="774272500439449680" id="message-774272500439449680">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://github.com/slicedlime/examples/raw/master/vanilla_worldgen.zip">https://github.com/slicedlime/examples/raw/master/vanilla_worldgen.zip</a> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774272525491896340" id="message-774272525491896340">
+                <div class="chatlog__content">
+                    <div class="markdown">New worldgen zip </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 03:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="774289291639521311" id="message-774289291639521311">
+                <div class="chatlog__content">
+                    <div class="markdown">Should probably be following that repo tbh </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394206020960308" id="message-774394206020960308">
+                <div class="chatlog__content">
+                    <div class="markdown">&lt;#763065741645709342&gt; </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/4e9e19b3d46971ab6708b7146bbd8c70.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RoxytheWolf#7666" data-user-id="594711986353471509" style="color: rgb(47,176,21)">RoxytheWolf</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394276200185876" id="message-774394276200185876">
+                <div class="chatlog__content">
+                    <div class="markdown">im tryin to make a voting system, a winning system for crewmates and imposters
+and making tasks
+idont know how to
+im in bedrock </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394376784052294" id="message-774394376784052294">
+                <div class="chatlog__content">
+                    <div class="markdown">Being in Bedrock is a large limitation </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/4e9e19b3d46971ab6708b7146bbd8c70.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RoxytheWolf#7666" data-user-id="594711986353471509" style="color: rgb(47,176,21)">RoxytheWolf</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394472271314946" id="message-774394472271314946">
+                <div class="chatlog__content">
+                    <div class="markdown">ok </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774394529859895336" id="message-774394529859895336">
+                <div class="chatlog__content">
+                    <div class="markdown">what can i and cant do </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394649909526569" id="message-774394649909526569">
+                <div class="chatlog__content">
+                    <div class="markdown">Voting system you can use scoreboards I guess </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/4e9e19b3d46971ab6708b7146bbd8c70.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RoxytheWolf#7666" data-user-id="594711986353471509" style="color: rgb(47,176,21)">RoxytheWolf</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394718842126337" id="message-774394718842126337">
+                <div class="chatlog__content">
+                    <div class="markdown">ok </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394762072948797" id="message-774394762072948797">
+                <div class="chatlog__content">
+                    <div class="markdown">the problem is that you can&#39;t have a menu </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/4e9e19b3d46971ab6708b7146bbd8c70.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RoxytheWolf#7666" data-user-id="594711986353471509" style="color: rgb(47,176,21)">RoxytheWolf</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394805060108308" id="message-774394805060108308">
+                <div class="chatlog__content">
+                    <div class="markdown">ok </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394805533933580" id="message-774394805533933580">
+                <div class="chatlog__content">
+                    <div class="markdown">Roxy#7666 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">1</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394821732990986" id="message-774394821732990986">
+                <div class="chatlog__content">
+                    <div class="markdown">I&#39;m not actually sure how you&#39;d do the detection for when they vote in BE </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/4e9e19b3d46971ab6708b7146bbd8c70.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RoxytheWolf#7666" data-user-id="594711986353471509" style="color: rgb(47,176,21)">RoxytheWolf</span>
+
+
+        <span class="chatlog__timestamp">06-Nov-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="774394853193809921" id="message-774394853193809921">
+                <div class="chatlog__content">
+                    <div class="markdown">ok </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 07:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="774537389275086848" id="message-774537389275086848">
+                <div class="chatlog__content">
+                    <div class="markdown">You&#39;re wasting your time attempting to do anything &quot;technical&quot; in Bedrock TBH </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 07:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="774542596693426176" id="message-774542596693426176">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="RoxytheWolf#7666">@RoxytheWolf</span> tbh ^ </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/572d37f59fef5b2f6ac38b454b2ddba4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Synical#7052" data-user-id="319948810505682944" style="color: rgb(47,176,21)">Synical</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="774737394490015806" id="message-774737394490015806">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="">@DataPack Help Ping</span> 
+I&#39;m trying to add a custom dimension to my datapack but I don&#39;t know where to exactly to start. All the tutorials I found were outdated. And the misode generator updated and looks more confusing than ever. Any help would be appreciated. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774737548139298837" id="message-774737548139298837">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="">@Worldgen Help Ping</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 08:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="774737921680605184" id="message-774737921680605184">
+                <div class="chatlog__content">
+                    <div class="markdown">I can help u in a bit :) </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774738025522790401" id="message-774738025522790401">
+                <div class="chatlog__content">
+                    <div class="markdown">Do you want a dimension with biomes or just a flat out dimension ? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/572d37f59fef5b2f6ac38b454b2ddba4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Synical#7052" data-user-id="319948810505682944" style="color: rgb(47,176,21)">Synical</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="774741081409454141" id="message-774741081409454141">
+                <div class="chatlog__content">
+                    <div class="markdown">just a flat out dimension <span class="mention" title="VeSaucy#4506">@VeSaucy</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="774742788704829520" id="message-774742788704829520">
+                <div class="chatlog__content">
+                    <div class="markdown">okay </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774743000823627857" id="message-774743000823627857">
+                <div class="chatlog__content">
+                    <div class="markdown">I assume 1.16? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774743067826978847" id="message-774743067826978847">
+                <div class="chatlog__content">
+                    <div class="markdown">in about the middle of the screen you can change the generator from 1.17 to 1.16 </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774743231815483452" id="message-774743231815483452">
+                <div class="chatlog__content">
+                    <div class="markdown">if you want just one biome you can use the biome source : fixed </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774743244508102698" id="message-774743244508102698">
+                <div class="chatlog__content">
+                    <div class="markdown">and select the biome </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/572d37f59fef5b2f6ac38b454b2ddba4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Synical#7052" data-user-id="319948810505682944" style="color: rgb(47,176,21)">Synical</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="774743828602945547" id="message-774743828602945547">
+                <div class="chatlog__content">
+                    <div class="markdown">i see </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774744904961228831" id="message-774744904961228831">
+                <div class="chatlog__content">
+                    <div class="markdown">ok so i have the dimension is there anything else i need to do? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="774747309250445312" id="message-774747309250445312">
+                <div class="chatlog__content">
+                    <div class="markdown">have you put it in the dimension folder as a .json? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/572d37f59fef5b2f6ac38b454b2ddba4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Synical#7052" data-user-id="319948810505682944" style="color: rgb(47,176,21)">Synical</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="774747698921603093" id="message-774747698921603093">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774747903431671908" id="message-774747903431671908">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="pre pre--multiline nohighlight">{
+  &quot;type&quot;: {
+    &quot;name&quot;: &quot;ats:the_moon&quot;,
+    &quot;ultrawarm&quot;: false,
+    &quot;natural&quot;: false,
+    &quot;piglin_safe&quot;: false,
+    &quot;respawn_anchor_works&quot;: false,
+    &quot;bed_works&quot;: false,
+    &quot;has_raids&quot;: false,
+    &quot;has_skylight&quot;: true,
+    &quot;has_ceiling&quot;: false,
+    &quot;coordinate_scale&quot;: 1,
+    &quot;ambient_light&quot;: 0,
+    &quot;fixed_time&quot;: 6000,
+    &quot;logical_height&quot;: 256,
+    &quot;infiniburn&quot;: &quot;minecraft:infiniburn_overworld&quot;
+  },
+  &quot;generator&quot;: {
+    &quot;type&quot;: &quot;minecraft:noise&quot;,
+    &quot;seed&quot;: -1808857663,
+    &quot;biome_source&quot;: {
+      &quot;type&quot;: &quot;minecraft:fixed&quot;,
+      &quot;seed&quot;: -1808857663,
+      &quot;biome&quot;: &quot;minecraft:end_barrens&quot;
+    },
+    &quot;settings&quot;: &quot;minecraft:end&quot;
+  }
+}</div> </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774747957555232820" id="message-774747957555232820">
+                <div class="chatlog__content">
+                    <div class="markdown">thats what i have for the dimension </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="774748692778844172" id="message-774748692778844172">
+                <div class="chatlog__content">
+                    <div class="markdown">dimension isnt loading tho </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="774752365789970432" id="message-774752365789970432">
+                <div class="chatlog__content">
+                    <div class="markdown">set the settings to overworld </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(46,204,113)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-Nov-20 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="774752366611267614" id="message-774752366611267614">
+                <div class="chatlog__content">
+                    <div class="markdown">VeSaucy#4506 just evolved to become... <span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">2yo and horny <img class="emoji " alt="person_dabbing" title="person_dabbing" src="https://cdn.discordapp.com/emojis/748258422545317948.png"></span></span> 
+<span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">Fine your lvl is <span class="pre pre--inline">5</span>, use <span class="pre pre--inline">!rank</span>/<span class="pre pre--inline">!levels</span> in <span class="mention">#&#129302;bot-commands</span></span></span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/93c488ba1757cc1a44716ae3f3a9ab3d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="VeSaucy#4506" data-user-id="209494852121919490" style="color: rgb(241,196,15)">VeSaucy</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="774752373779726386" id="message-774752373779726386">
+                <div class="chatlog__content">
+                    <div class="markdown">try that </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/572d37f59fef5b2f6ac38b454b2ddba4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Synical#7052" data-user-id="319948810505682944" style="color: rgb(47,176,21)">Synical</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-20 09:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="774753522969215016" id="message-774753522969215016">
+                <div class="chatlog__content">
+                    <div class="markdown">nope </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/6d9277ef857b119ef4088fe4d5b95cea.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Hotdoggu#7967" data-user-id="387440232280227842" style="color: rgb(47,176,21)">Hotdoggu</span>
+
+
+        <span class="chatlog__timestamp">11-Nov-20 12:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="775874627067052053" id="message-775874627067052053">
+                <div class="chatlog__content">
+                    <div class="markdown">how do i summon a villager selling a custom banner in java 1.16 <span class="chatlog__edited-timestamp" title="11-Nov-20 12:09 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/6d9277ef857b119ef4088fe4d5b95cea.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Hotdoggu#7967" data-user-id="387440232280227842" style="color: rgb(47,176,21)">Hotdoggu</span>
+
+
+        <span class="chatlog__timestamp">11-Nov-20 12:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="775876964564336661" id="message-775876964564336661">
+                <div class="chatlog__content">
+                    <div class="markdown">nvm </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">11-Nov-20 02:42 AM</span>
+
+            <div class="chatlog__message " data-message-id="775913342267031572" id="message-775913342267031572">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Hotdoggu#7967">@Hotdoggu</span> well you said nvm but JSYK you can use <a href="https://mcstacker.net">https://mcstacker.net</a> to generate a <span class="pre pre--inline">/summon</span> command </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/adaa014ff6c6e67b34c234cbda1266b8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="TahmKenchOnTop#9117" data-user-id="323838439474855936" style="color: rgb(47,176,21)">TahmKenchOnTop</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 08:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="776910835669925909" id="message-776910835669925909">
+                <div class="chatlog__content">
+                    <div class="markdown">Is it possible to make the player open a container (with no mods/plugins) <span class="chatlog__edited-timestamp" title="13-Nov-20 08:46 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776910874757169203" id="message-776910874757169203">
+                <div class="chatlog__content">
+                    <div class="markdown">like with a command </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 08:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="776910949226905610" id="message-776910949226905610">
+                <div class="chatlog__content">
+                    <div class="markdown">Nope </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-20 01:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="777160755308003378" id="message-777160755308003378">
+                <div class="chatlog__content">
+                    <div class="markdown">Thanks for specifying &quot;with a command&quot; this time: as you can see you got an answer. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/8d73475ba16dc05853b2076e9b66bca3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukihira#3630" data-user-id="625409615169060867" style="color: rgb(47,176,21)">Yukihira</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-20 01:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="779337070211498024" id="message-779337070211498024">
+                <div class="chatlog__content">
+                    <div class="markdown">... </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-20 03:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="779371724252643378" id="message-779371724252643378">
+                <div class="chatlog__content">
+                    <div class="markdown">? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">20-Nov-20 05:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="779397245774200832" id="message-779397245774200832">
+                <div class="chatlog__content">
+                    <div class="markdown">Hello? </div>
+                </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="⭐" title="⭐" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-help-chat-4%20%5B763065741645709342%5D.html_Files/2b50.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 185 message(s)</div>
+</div>
+
+</body>
+</html>

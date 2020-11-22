@@ -1,0 +1,2832 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Knowledge Base™ - &#128272;unused-piggy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a56bcbda5ea1db3e101c6895440d1c5b.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Knowledge Base™</div>
+        <div class="preamble__entry">&#128272;Archived / &#128272;unused-piggy</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="758019421464952842" id="message-758019421464952842">
+                <div class="chatlog__content">
+                    <div class="markdown">Now what </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="758020109175488572" id="message-758020109175488572">
+                <div class="chatlog__content">
+                    <div class="markdown">idk </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758020140645351514" id="message-758020140645351514">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758020407239376948" id="message-758020407239376948">
+                <div class="chatlog__content">
+                    <div class="markdown">Stupid bots </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758020470862774473" id="message-758020470862774473">
+                <div class="chatlog__content">
+                    <div class="markdown">Theyll never conquer humanity at this pace </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="758020700463300668" id="message-758020700463300668">
+                <div class="chatlog__content">
+                    <div class="markdown">oh I fixed it in the settings </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758020706398109857" id="message-758020706398109857">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758020721409654885" id="message-758020721409654885">
+                <div class="chatlog__content">
+                    <div class="markdown">or did I </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758020870735265932" id="message-758020870735265932">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="758020871310016684" id="message-758020871310016684">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">My recommendation is for you to...</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511">@&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+ Add to the collection.Use p!pq to view the server collection and p!pq-add to contribute to them to gain more XP.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.png">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="758020885335769228" id="message-758020885335769228">
+                <div class="chatlog__content">
+                    <div class="markdown">there we go </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024310664331364" id="message-758024310664331364">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024315617673298" id="message-758024315617673298">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Use p!adopt to adopt a piggy</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024336371220541" id="message-758024336371220541">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024337054892193" id="message-758024337054892193">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span> Use <strong>p!adopt &lt;character&gt;</strong> to adopt your piggy!
+ Like p!adopt <strong>magician</strong> or p!adopt <strong>m</strong> to adopt a magician</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif">
+                                        <img class="chatlog__embed-image" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif" alt="Image">
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024376242405459" id="message-758024376242405459">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt <span class="pre pre--inline">e</span>e<span class="pre pre--inline">e</span>e<span class="pre pre--inline">e</span>e<span class="pre pre--inline">e</span>e` </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024376858968235" id="message-758024376858968235">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511">@&#128017;Sheep-kun; SheepCommander☭&#127913;</span>, You have already adopted a piggy. Use p!info to see info about it or type p!help for my recommendation on what to do next. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024424711782410" id="message-758024424711782410">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt w </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024425252716545" id="message-758024425252716545">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Congratulations! <span class="mention" title="asdru#3882">@asdru</span>, you have collected a <strong>warrior</strong>.
+Start by naming your piggy with <strong>p!name &lt;name&gt;</strong> like <em>p!name Dave</em>
+ Know more about Piggy <a href="https://piggy.gg/about-piggy">here</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/warrior.gif">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/warrior.gif" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024493485654056" id="message-758024493485654056">
+                <div class="chatlog__content">
+                    <div class="markdown">p!name cockandballtorture </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024493863141507" id="message-758024493863141507">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span>, I love my new name :heart:. 
+
+Your Piggy is Level 1. Want to earn XP and level up? Type p!help and I will guide you on fun things you can do to help your fellow Piggies on this server become sentient. Type <strong>p!help</strong> in your server or in the DM I and we&#39;ll get you leveled up!</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024550956007637" id="message-758024550956007637">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 06:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="758024551526301803" id="message-758024551526301803">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span>, Check your DMs for Piggy&#39;s personalized next steps for <s>world domination</s>... I mean earning XP and leveling up. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="758025599255183530" id="message-758025599255183530">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="758025599812894790" id="message-758025599812894790">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">My recommendation is for you to...</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511">@&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+ Add to the collection.Use p!pq to view the server collection and p!pq-add to contribute to them to gain more XP.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.png">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="758029457998086297" id="message-758029457998086297">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="758029461471101099" id="message-758029461471101099">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="asdru#3882">@asdru</span>, Check your DMs for Piggy&#39;s personalized next steps for <s>world domination</s>... I mean earning XP and leveling up. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758032938267836577" id="message-758032938267836577">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758032938649518133" id="message-758032938649518133">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Use p!adopt to adopt a piggy</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758032955514945587" id="message-758032955514945587">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758032963735650465" id="message-758032963735650465">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span> Use <strong>p!adopt &lt;character&gt;</strong> to adopt your piggy!
+ Like p!adopt <strong>magician</strong> or p!adopt <strong>m</strong> to adopt a magician</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif">
+                                        <img class="chatlog__embed-image" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif" alt="Image">
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033038889189386" id="message-758033038889189386">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt s </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033039736700988" id="message-758033039736700988">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Congratulations! <span class="mention" title="MMK21Games#2121">@MMK21Games</span>, you have collected a <strong>strategist</strong>.
+Start by naming your piggy with <strong>p!name &lt;name&gt;</strong> like <em>p!name Dave</em>
+ Know more about Piggy <a href="https://piggy.gg/about-piggy">here</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.gif">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/strategist.gif" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033095873265788" id="message-758033095873265788">
+                <div class="chatlog__content">
+                    <div class="markdown">P!name MMK21 </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758033137908318399" id="message-758033137908318399">
+                <div class="chatlog__content">
+                    <div class="markdown">p! name MMK21 </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758033183022383274" id="message-758033183022383274">
+                <div class="chatlog__content">
+                    <div class="markdown">p!Name MMK21 </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033183538282526" id="message-758033183538282526">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>, I love my new name :heart:. 
+
+Your Piggy is Level 1. Want to earn XP and level up? Type p!help and I will guide you on fun things you can do to help your fellow Piggies on this server become sentient. Type <strong>p!help</strong> in your server or in the DM I and we&#39;ll get you leveled up!</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033229063127220" id="message-758033229063127220">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033229935804426" id="message-758033229935804426">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>, Check your DMs for Piggy&#39;s personalized next steps for <s>world domination</s>... I mean earning XP and leveling up. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033416762556608" id="message-758033416762556608">
+                <div class="chatlog__content">
+                    <div class="markdown">p!lang English (UK) </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="758033946544963695" id="message-758033946544963695">
+                <div class="chatlog__content">
+                    <div class="markdown">p!battle </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758033970054299758" id="message-758033970054299758">
+                <div class="chatlog__content">
+                    <div class="markdown">fuck off </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758034005609283724" id="message-758034005609283724">
+                <div class="chatlog__content">
+                    <div class="markdown">lazy ass swine fuck </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="758034743291019275" id="message-758034743291019275">
+                <div class="chatlog__content">
+                    <div class="markdown">p!battle <span class="mention" title="asdru#3882">@asdru</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="758034922085810327" id="message-758034922085810327">
+                <div class="chatlog__content">
+                    <div class="markdown">f </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035344653287514" id="message-758035344653287514">
+                <div class="chatlog__content">
+                    <div class="markdown">p!battle </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035357840310403" id="message-758035357840310403">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>, You have been matched with <strong>Captain Oink</strong>! </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758035400760754247" id="message-758035400760754247">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span> vs Captain Oink</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/output.gif">
+                                        <img class="chatlog__embed-image" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/output.gif" alt="Image">
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035404363530289" id="message-758035404363530289">
+                <div class="chatlog__content">
+                    <div class="markdown">p!buff </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035405097664584" id="message-758035405097664584">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">Buff me up!</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>
+
+Buff me up and make me unique! Buffs are divided into 3 categories. To view a specific category, type one of the following commands:</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown"><span class="pre pre--inline">p!buff weapon</span></div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">View the weapon buffs</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown"><span class="pre pre--inline">p!buff armor</span></div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">View the armor buffs</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown"><span class="pre pre--inline">p!buff booster</span></div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">View the booster buffs. They are activated for a limited number of battles.</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Note</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">Use <strong>p!buff-view &lt;category&gt;</strong> command to see buffs in detailed view. e.g. <em>p!buff-view armor</em></div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035455190106184" id="message-758035455190106184">
+                <div class="chatlog__content">
+                    <div class="markdown">p!buff armour </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035455781372035" id="message-758035455781372035">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>, You have selected an invalid option </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="758035464329494678" id="message-758035464329494678">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">Battle Results | MMK21Games :crossed_swords: Captain Oink</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">The winner is <strong>Captain Oink</strong>. Congratulations Captain Oink, you have defeated <span class="mention" title="MMK21Games#2121">@MMK21Games</span> and won (0) Gold and (5) Silver coins from <strong>MMK21Games</strong>&#39;s wealth. 
+
+Use <strong>p!buff</strong> to buy items and increase your piggy power
+
+Turn your Battle DM Notifications on or off by using <strong>p!battle-dm ON</strong> or <strong>p!battle-dm OFF</strong> respectively.</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="758035468544639059" id="message-758035468544639059">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>, Yay! You have just completed your first battle. There will be many more to come.
+ Type p!help to continue learning more about piggy</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035509158084702" id="message-758035509158084702">
+                <div class="chatlog__content">
+                    <div class="markdown">p!buff weapon </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Sep-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035510194208899" id="message-758035510194208899">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown">Buff Items (Weapon)</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="MMK21Games#2121">@MMK21Games</span>
+
+<span class="pre pre--inline">Code |</span>  :crossed_swords:  <span class="pre pre--inline">|</span>  :dash:  <span class="pre pre--inline">|</span>  :heart:  <span class="pre pre--inline">|</span>  :recycle:  <span class="pre pre--inline">|</span>  :shield:  <span class="pre pre--inline">|</span>  :skull_crossbones:  <span class="pre pre--inline">|</span>   :moneybag:     <span class="pre pre--inline">|</span>  :unlock:
+<span class="pre pre--inline">B13  |  +1|    |  +1|    |    |    |  100|  1</span>
+<span class="pre pre--inline">B14  |  +3|    |  +3|    |    |    |  500|  5</span>
+<span class="pre pre--inline">C5*  |  +2|    |  +2|    |    |    |  600|  1</span>
+<span class="pre pre--inline">C11* |  +4|    |  +4|    |    |    |  800|  1</span>
+<span class="pre pre--inline">B15  |  +5|    |  +5|    |    |    |   2k| 15</span>
+<span class="pre pre--inline">BX5  |  +8|    |  +8|    |    |    |  10k| 25</span></div>
+                                        </div>
+
+                                        <div class="chatlog__embed-fields">
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:crossed_swords:    Attack Power (%)</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:dash:    Attack Speed</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:heart:    Health Points (%)</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:recycle:    Regeneration (%)</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:shield:    Defense (%)</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:skull_crossbones:    Critical Hit Chances</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">:unlock:    Level Unlock</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">​</div>
+                                                        </div>
+                                                </div>
+                                                <div class="chatlog__embed-field ">
+                                                        <div class="chatlog__embed-field-name">
+                                                            <div class="markdown">Note</div>
+                                                        </div>
+
+                                                        <div class="chatlog__embed-field-value">
+                                                            <div class="markdown">Use <strong>p!buff-view code</strong> command to see buff in detailed view. e.g. <em>p!buff-view bc12</em>
+ Buffs marked with * can only be received in chests 
+ You can also see the list of all buffs <a href="https://piggy.gg/buffs">here</a></div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+
+                            </div>
+
+
+                                <div class="chatlog__embed-footer">
+
+                                        <span class="chatlog__embed-footer-text">
+Page 1 / 1
+
+                                        </span>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/7a8482c649c097e96eddc02e4fb390a5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MMK21Games#2121" data-user-id="569602218731372710" style="color: rgb(255,0,0)">MMK21Games</span>
+
+
+        <span class="chatlog__timestamp">22-Sep-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="758035855897133206" id="message-758035855897133206">
+                <div class="chatlog__content">
+                    <div class="markdown">RIP </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-20 10:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="760252220784115783" id="message-760252220784115783">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">28-Sep-20 10:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="760252221346152539" id="message-760252221346152539">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Use p!adopt to adopt a piggy</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-20 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="760252248306876446" id="message-760252248306876446">
+                <div class="chatlog__content">
+                    <div class="markdown">great help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a638c70d412df2f66c0251241c592705.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kamo005#3594" data-user-id="725637123884974080" style="">Kamo005</span>
+
+
+        <span class="chatlog__timestamp">30-Sep-20 06:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="760733841899388928" id="message-760733841899388928">
+                <div class="chatlog__content">
+                    <div class="markdown">help </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="760733898455515148" id="message-760733898455515148">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">30-Sep-20 06:24 AM</span>
+
+            <div class="chatlog__message " data-message-id="760733899360829481" id="message-760733899360829481">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Use p!adopt to adopt a piggy</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a638c70d412df2f66c0251241c592705.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kamo005#3594" data-user-id="725637123884974080" style="">Kamo005</span>
+
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760733927596884028" id="message-760733927596884028">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760733927856930837" id="message-760733927856930837">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="Kamo005#3594">@Kamo005</span> Use <strong>p!adopt &lt;character&gt;</strong> to adopt your piggy!
+ Like p!adopt <strong>magician</strong> or p!adopt <strong>m</strong> to adopt a magician</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+                                <div class="chatlog__embed-image-container">
+                                    <a class="chatlog__embed-image-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif">
+                                        <img class="chatlog__embed-image" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/adopt.gif" alt="Image">
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a638c70d412df2f66c0251241c592705.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kamo005#3594" data-user-id="725637123884974080" style="">Kamo005</span>
+
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734027229036555" id="message-760734027229036555">
+                <div class="chatlog__content">
+                    <div class="markdown">p!adopt m </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734027983355905" id="message-760734027983355905">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown">Congratulations! <span class="mention" title="Kamo005#3594">@Kamo005</span>, you have collected a <strong>magician</strong>.
+Start by naming your piggy with <strong>p!name &lt;name&gt;</strong> like <em>p!name Dave</em>
+ Know more about Piggy <a href="https://piggy.gg/about-piggy">here</a></div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/magician.gif">
+                                            <img class="chatlog__embed-thumbnail" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/magician.gif" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a638c70d412df2f66c0251241c592705.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kamo005#3594" data-user-id="725637123884974080" style="">Kamo005</span>
+
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734088033861632" id="message-760734088033861632">
+                <div class="chatlog__content">
+                    <div class="markdown">p!name piggy </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734088520531968" id="message-760734088520531968">
+                <div class="chatlog__content">
+                    <div class="markdown"> </div>
+                </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown"><span class="mention" title="Kamo005#3594">@Kamo005</span>, I love my new name :heart:. 
+
+Your Piggy is Level 1. Want to earn XP and level up? Type p!help and I will guide you on fun things you can do to help your fellow Piggies on this server become sentient. Type <strong>p!help</strong> in your server or in the DM I and we&#39;ll get you leveled up!</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/a638c70d412df2f66c0251241c592705.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kamo005#3594" data-user-id="725637123884974080" style="">Kamo005</span>
+
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734123488182273" id="message-760734123488182273">
+                <div class="chatlog__content">
+                    <div class="markdown">p!help </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/be82b01b2f901dff96859eab10d15c5b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="piggy#5866" data-user-id="681770687614156811" style="">piggy</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">30-Sep-20 06:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="760734124310134785" id="message-760734124310134785">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Kamo005#3594">@Kamo005</span>, Check your DMs for Piggy&#39;s personalized next steps for <s>world domination</s>... I mean earning XP and leveling up. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/997a51bf3a6a7263c528a7138932826b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="тне оие аиd оиlч, фмеlz тне vоid#0526" data-user-id="382853907031916544" style="color: rgb(187,221,255)">qmelz.name.set(&quot;QmelZ&quot;);</span>
+
+
+        <span class="chatlog__timestamp">02-Oct-20 01:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="761379151105622061" id="message-761379151105622061">
+                <div class="chatlog__content">
+                    <div class="markdown">lol </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="761379165457874964" id="message-761379165457874964">
+                <div class="chatlog__content">
+                    <div class="markdown">world domination </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="761379173120999504" id="message-761379173120999504">
+                <div class="chatlog__content">
+                    <div class="markdown">great </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="761379202636185613" id="message-761379202636185613">
+                <div class="chatlog__content">
+                    <div class="markdown">i mean </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="761379223314235423" id="message-761379223314235423">
+                <div class="chatlog__content">
+                    <div class="markdown">what a great joke </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-20 09:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="763861778287165451" id="message-763861778287165451">
+                <div class="chatlog__content">
+                    <div class="markdown">HOW
+how do i choose cock class? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="763862830507491358" id="message-763862830507491358">
+                <div class="chatlog__content">
+                    <div class="markdown">ask Piggy </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="763862928792223774" id="message-763862928792223774">
+                <div class="chatlog__content">
+                    <div class="markdown">piggy how do i choose cock class </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="763862986602446878" id="message-763862986602446878">
+                <div class="chatlog__content">
+                    <div class="markdown">it didn&#39;t work <span class="chatlog__edited-timestamp" title="08-Oct-20 09:38 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/d90243a30d19685ea104351fb4e7f7a0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="asdru#3882" data-user-id="372715536121069578" style="color: rgb(26,188,156)">asdru</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="763863067196129321" id="message-763863067196129321">
+                <div class="chatlog__content">
+                    <div class="markdown">shm my head my smh head my </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/10a67798f00a32fd380155991ee3fa0e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="GoatInABoat#2016" data-user-id="649438618766802955" style="color: rgb(47,176,21)">☭&#129363;BaconCommander&#128218;&#128212;&#128213;&#128215;&#128216;&#128217;&#128211;&#128214;™</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="763863165758865441" id="message-763863165758865441">
+                <div class="chatlog__content">
+                    <div class="markdown">sm head mh head </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/89e31a4c68981e58de51334f1e8fd114.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Anthony2be#1900" data-user-id="524430573964361733" style="color: rgb(89,234,253)">Aperture Science CEO</span>
+
+
+        <span class="chatlog__timestamp">12-Oct-20 06:11 AM</span>
+
+            <div class="chatlog__message " data-message-id="765079236314660874" id="message-765079236314660874">
+                <div class="chatlog__content">
+                    <div class="markdown">Hullo </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Knowledge%20Base%E2%84%A2%20-%20%F0%9F%94%90Archived%20-%20%F0%9F%94%90unused-piggy%20%5B758004991024824401%5D.html_Files/ccce441fb66cb4693ed52bcd750b0d80.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="&#128017;Sheep-kun; SheepCommander☭&#127913;#1511" data-user-id="511656055974133780" style="color: rgb(240,255,240)">&#128017;Sheep-kun; SheepCommander☭&#127913;</span>
+
+
+        <span class="chatlog__timestamp">12-Oct-20 07:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="765096882887327766" id="message-765096882887327766">
+                <div class="chatlog__content">
+                    <div class="markdown">no </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 84 message(s)</div>
+</div>
+
+</body>
+</html>

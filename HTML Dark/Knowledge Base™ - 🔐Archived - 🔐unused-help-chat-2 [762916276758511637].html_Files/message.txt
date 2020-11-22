@@ -1,0 +1,20 @@
+execute as @a[tag=!welcomed] run tellraw @a [{"text":"\nWelcome ","color":"aqua"},{"selector":"@s","color":"green","bold":"true"},{"text":" to our server!\n","color":"aqua"}]
+execute if entity @a[tag=!welcomed] at @a run playsound minecraft:ui.toast.challenge_complete player @a ~ ~ ~ 100 0.0 1.0
+execute as @a[tag=!welcomed] run title @a title [{"selector":"@s","color":"red"}]
+execute as @a[tag=!welcomed] run title @a subtitle [{"text":"Welcome ","color":"aqua"},{"selector":"@s","color":"green","bold":"true"},{"text":"!"}]
+execute as @a[tag=!welcomed] run tellraw @s [{"text":"For help use ","color":"aqua"},{"text":"/trigger Info","color":"green","clickEvent":{"action":"run_command","value":"/trigger Info"}},{"text":"!"}]
+scoreboard players enable @a[tag=!welcomed] Rules
+tag @a[tag=!welcomed] add welcomed
+
+execute as @a[scores={oldPlayer=1..}] run tellraw @a [{"translate":"multiplayer.player.joined","color":"aqua","with":[{"selector":"@s","color":"green","bold":"true"}]},{"text":"!"}]
+execute if entity @a[scores={oldPlayer=1..}] at @a run playsound minecraft:ui.toast.challenge_complete player @a ~ ~ ~ 100 1.8 1.0
+tellraw @a[scores={oldPlayer=1..}] [{"text":"This motd is brought to you by ","color":"aqua"},{"text":"<server-ip>","color":"red","clickEvent":{"action":"open_url","value":"https://tomatocake.aternos.me"}},{"text":"!"}]
+scoreboard players reset @a oldPlayer
+
+tellraw @a[scores={Info=1}] [{"text":"Use ","color":"gray"},{"text":"/trigger Info set <page>","color":"yellow","clickEvent":{"action":"suggest_command","value":"/trigger Info set "}},{"text":" to see the help pages:\n2. Help / FAQ\n3. Rules"}]
+tellraw @a[scores={Info=2}] [{"text":"I'm sorry - no one added help here. Please ask other people!\n(","color":"gray"},{"selector":"@a","color":"dark_aqua"},{"text":")"}]
+tellraw @a[scores={Info=3}] [{"text":"Rules:\n1. No Griefing.\n2. No Spamming.\n3. No Hacking or Cheating.\n4. No ad.","color":"gray"}]
+scoreboard players reset @a[scores={Info=1..}] Info
+scoreboard players enable @a Info
+
+schedule function welcome:tick 10t
