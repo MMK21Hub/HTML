@@ -5,6 +5,7 @@ body{
     background-color: #36393f;
     color: #ffffff;
     font-family: 'Ubuntu';
+    margin: 0;
 }
 
 code, pre{
@@ -24,3 +25,60 @@ a{
         padding-left: 0%;
     }
 }
+
+/* Sidebar */
+    .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 240px;
+        background-color: #2f3136;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+    }
+
+    /* Sidebar links */
+    .sidebar a {
+        display: block;
+        color: #8e9297;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    /* Active link */
+    .sidebar a.active {
+        background-color: rgba(79,84,92,0.24);
+        color: #ffffff;
+    }
+
+    /* Hovered link */
+    .sidebar a:hover:not(.active) {
+        background-color: rgba(79, 84, 92, 0.16);
+        color: #dcddde;
+    }
+
+    /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+    .content {
+        margin-left: 240px;
+        padding: 1px 16px;
+        height: 1000px;
+    }
+
+    /* On screens that are less than 700px wide, make the sidebar into fullscreen */
+    @media screen and (max-width: 700px) {
+        .sidebar {
+            width: 100%;
+            height: 100%;
+            padding-left: 10%;
+        }
+        .content {
+            display: none;
+        }
+    }
+
+    /* On screens that are less than 400px, remove the padding */
+    @media screen and (max-width: 400px) {
+        .sidebar{
+            padding: 0%;
+        }
+    }
