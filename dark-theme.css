@@ -57,6 +57,11 @@ a{
         color: #dcddde;
     }
 
+    /* Heading */
+    .sidebar h1{
+        margin: 8px;
+    }
+
     /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
     .content {
         margin-left: 240px;
