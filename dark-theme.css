@@ -14,3 +14,13 @@ code, pre{
 a{
     color: #00b0f4;
 }
+
+#content{
+    padding-left: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+    #content{
+        padding-left: 0%;
+    }
+}
