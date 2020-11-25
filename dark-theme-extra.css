@@ -30,6 +30,25 @@
     }
 }
 
+/* Focused link */
+.sidebar a:focus-visible, .sidebar a:focus{
+    outline: 0px;
+    background-color: rgba(79, 84, 92, 0.16);
+    color: #dcddde;
+}
+
+/* Active link */
+.sidebar a.active {
+    background-color: rgba(79,84,92,0.24);
+    color: #ffffff;
+}
+
+/* Hovered link */
+.sidebar a:hover:not(.active) {
+    background-color: rgba(79, 84, 92, 0.16);
+    color: #dcddde;
+}
+
 @media only screen and (max-width: 600px) {
     #content{
         padding-left: 0%;
