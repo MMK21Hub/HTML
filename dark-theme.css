@@ -7,6 +7,23 @@ body{
     margin: 0;
 }
 
+/* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 10px; 
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #202225;
+        border-radius: 10px;
+    }
+
 a{
     color: #00b0f4;
 }
@@ -24,6 +41,7 @@ a{
         position: fixed;
         height: 100%;
         overflow: auto;
+        scrollbar-width: thin;
     }
 
     /* Sidebar links */
