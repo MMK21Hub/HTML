@@ -5,6 +5,7 @@ body{
     color: #ffffff;
     font-family: 'Ubuntu';
     margin: 0;
+    scrollbar-color: dark;
 }
 
 /* Scrollbar */
@@ -41,7 +42,12 @@ a{
         position: fixed;
         height: 100%;
         overflow: auto;
+
         scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+    }
+    .sidebar:hover{
+        scrollbar-color: #4e5157 transparent;
     }
 
     /* Sidebar links */
