@@ -7,3 +7,11 @@
         margin: 8px;
     }
 }
+
+/* Extra padding at large screen sizes */
+@media screen and (min-width: 1000px){
+    #content{
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
