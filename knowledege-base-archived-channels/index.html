@@ -12,6 +12,7 @@
     <link rel="preload" href="browser-extra.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="browser-extra.css"></noscript>
     <style>body{background-color:#36393f;color:#fff;}</style>
+    <script src="index.js"></script>
 
     <!-- Material -->
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
@@ -66,7 +67,10 @@
         -->
     </nav>
     <main>
-
+        <button class="mdc-button foo-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Button</span>
+          </button>
     </main>
 </body>
 </html>
