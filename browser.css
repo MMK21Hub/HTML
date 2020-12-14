@@ -1,3 +1,7 @@
+body {
+    --sidebar-width: 240px
+}
+
 /* Scrollbar */
     ::-webkit-scrollbar {
         width: 6px;
@@ -19,11 +23,12 @@
     .sidebar {
         margin: 0;
         padding: 0;
-        width: 240px;
+        width: var(--sidebar-width);
         background-color: #2f3136;
         position: fixed;
         height: 100%;
         overflow: auto;
+        top: 0;
 
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
@@ -47,7 +52,7 @@
     }
 
     /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-    #content{
-        margin-left: 240px;
-        padding: 1px 16px;
+    #content, main{
+        margin-left: var(--sidebar-width);
+        padding: 10px 16px;
     }
